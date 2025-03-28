@@ -1,0 +1,200 @@
+
+body{
+    background-color: aliceblue;
+}
+.header{
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 690px 760px 10px ;
+    color: rgb(234, 242, 238);
+    background-color: rgb(6, 54, 246);
+}
+.header2{
+    position: fixed;
+    top: 8%;
+    width: 100%;
+    color: rgb(49, 150, 88);
+    background-color: rgb(245, 246, 248);
+    border: 2px white;
+    border-style: none none solid none;
+    box-shadow:2px 2px 12px 2px rgb(201, 199, 199);
+}
+.h{
+    display: grid;
+    font-weight: bold;
+    grid-template-columns: 720px 170px 100px ;
+}
+.incomeh{
+    margin-top: 15%;
+    
+    margin-bottom: 0%;
+    font-weight: bold;
+    color: blue;
+   
+    
+}
+.incomename{
+    display: flex;
+    justify-content: space-around;
+    flex:1;
+}
+#gt{
+    margin:100px 630px;
+    
+}
+#date{
+    margin:10px 0px;
+    
+}
+
+.bottom{
+    
+    position: fixed;
+    bottom: 0%;
+    padding: 10px 30px;
+    width:100% ;
+    border: 2px white;
+    border-style: none none solid none;
+    box-shadow:2px 2px 12px 2px rgb(201, 199, 199);
+}
+.bt{
+    float:left;
+    margin-right: 180px;
+    line-height:0px ;
+    color: rgb(93, 90, 90);
+}
+.bt:hover, .bt:active {
+    color: rgb(6, 54, 246);
+}
+
+#icon{
+    margin-left: 200px;
+}
+.add{
+    position:fixed;
+    top: 75%;
+    left: 90%;
+    border-radius: 90px;
+    padding: 8px 15px;
+    width: max-content;
+    font-weight: bolder;
+    font-size: x-large;
+    border:2px solid white;
+    box-shadow:2px 9px 12px 2px rgb(188, 188, 191) ;
+
+
+}
+
+.body{
+    margin-top: 5%;
+    margin-left: 20%;
+    width: 60%;
+    
+}
+.body h3 {
+    color: rgb(122, 125, 121);
+    text-align: left;
+    margin-left: 20px;
+}
+.body p{
+    color: rgb(31, 192, 85);
+   
+}
+.labels{
+    float:left;
+}
+.lab{
+    border: 2px  rgb(219, 211, 211);
+    border-style: none solid solid solid;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    height: 60px;
+    width: 100%;
+   
+}
+hr{
+    color: rgb(195, 250, 141);
+}
+.name{
+    line-height: 0%;
+    margin: 0px 30px;
+    
+}
+@media screen and (max-width:925px){
+    #gt{
+        margin:100px 250px;
+        
+    }
+    #date{
+        margin:10px 0px;
+        
+    }
+    
+    
+    .h{
+        font-weight: bold;
+        display: grid;
+        grid-template-columns: 330px 170px 100px ;
+    }
+   
+    .header{
+   
+        display: grid;
+        grid-template-columns: 500px 390px 10px ;
+    }
+    .bt{
+        
+        margin-right: 65px;
+        
+        
+    }
+    #icon{
+        margin-left:50px;
+    }
+    .add{
+        position:fixed;
+        top: 78%;
+        background-color: rgb(247, 244, 240);
+        color: black;
+    
+    }
+    .body{
+        margin-top: 5%;
+        width: 100%;
+        margin-left: 0%;
+        
+        
+    }
+    .body h3 {
+        color: rgb(122, 125, 121);
+        text-align: left;
+        margin-left: 20px;
+    }
+    .body p{
+        color: rgb(31, 192, 85);
+       
+    }
+    .labels{
+        float:left;
+    }
+    .lab{
+        border: 2px  rgb(219, 211, 211);
+        border-style: none none solid none;
+        height: 60px;
+        width: 100%;
+        margin-bottom: 0px;
+        border-radius: 0px;
+       
+    }
+    hr{
+        color: rgb(195, 250, 141);
+    }
+    .name{
+        line-height: 0%;
+        margin: 0px 30px;
+        
+    }
+    
+}

@@ -1,0 +1,134 @@
+body{
+    background-color: rgb(238, 246, 241);
+   
+    
+}
+
+.login{
+    position: fixed;
+    border: 1px solid grey;
+    box-shadow: 2px 2px 12px 0px grey;
+    border-radius: 15px;
+    font-size:large;
+    width: 400px;
+    height: 490px;
+    margin: 100px 500px;
+    padding: 30px 0px 50px 0px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    background-color: rgb(245, 247, 249);
+    font-weight: bolder;
+    color:black ;
+    
+    
+}
+
+h2,.p{
+    text-align: center;
+   line-height: 10px;
+}
+
+form{
+    padding-left: 60px;
+    padding-right:0px;
+    line-height: 30px;
+    
+}
+input,.login-btn{
+    line-height: 30px;
+    width:75%;
+   
+    border: 1px solid #bab8b8;
+    border-radius: 6px;
+    font-size: 16px;
+    padding-left: 10px;
+    font-size:15px;
+    
+    margin-bottom: 10px;
+    height:35px ;
+    
+}
+label{
+    font-weight: bold;
+    
+}
+.login-btn{
+    margin-top: 10px;
+    padding-top: 4.5px;
+    width:270px;
+    height: 40px;
+    font-weight: bold;
+    font-size: medium;
+    background: rgb(34, 139, 34);
+    border: #bab8b8 ;
+    border-radius: 6px;
+    color: rgb(250, 251, 252);
+}
+.login-btn:hover{
+    background-color: rgb(4, 114, 52);
+}
+.switch-theme {
+    padding-left: 60px;
+    color: #555;
+}
+.authbutt{
+    float: left;
+    width: 37%;
+    margin:8px ;
+    padding: 7px;
+    height:47px ;
+    margin-top: 0%;
+    border-radius: 5px;
+    box-shadow: none;
+    background-color: rgb(237, 235, 235);
+    color:black;
+    border: solid 1px #9b9898;
+    
+}
+.butt{
+    float: left;
+    padding: 5px;
+    font-weight:lighter;
+    font-size: larger;
+    
+    
+}
+img{
+    mix-blend-mode:darken;
+    opacity: 0.9;
+   padding: 0cap;
+    
+}
+.divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+    margin-bottom: 10px;
+    
+}
+
+.line {
+    flex: 1;  /* Makes both lines expand evenly */
+    border: none;
+    
+    height: 1px;
+    background-color: #c5c0c0; /* Black color for strong visibility */
+}
+
+.divider span {
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #8e8a8a;
+}
+.label{
+    font-weight: bold;
+    font-size: medium;
+    }
+@media screen and (max-width:925px){
+    .login{
+        margin: 100px 190px;
+
+    }
+}
