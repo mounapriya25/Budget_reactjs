@@ -7,7 +7,7 @@ body{
     top: 0%;
     width: 100%;
     display: grid;
-    grid-template-columns: 690px 760px 10px ;
+    grid-template-columns: 690px 750px 10px ;
     color: rgb(234, 242, 238);
     background-color: rgb(6, 54, 246);
 }
@@ -21,14 +21,9 @@ body{
     border-style: none none solid none;
     box-shadow:2px 2px 12px 2px rgb(201, 199, 199);
 }
-.h{
-    display: grid;
-    font-weight: bold;
-    grid-template-columns: 720px 170px 100px ;
-}
 .h3{
     display: grid;
-    grid-template-columns: 800px 250px;
+    grid-template-columns: 800px 250px 200px;
     font-size: 15;
     font-weight:600;
     color: rgb(87, 150, 108);
@@ -72,15 +67,22 @@ body{
     margin-left: 200px;
 }
 .body{
-    margin-top: 29%;
+    margin-top:  18%;
 }
-
+#r1{
+    margin: 10px 0px 10px 530px;
+}
 #details{
     display: grid;
-    grid-template-columns: 8% 85% 5%;
-    border-style: none none solid none;
-    border-color: green;
-    border-width: 2px;
+    grid-template-columns: 13% 80% 5%;
+    margin-top: 20px;
+    border: 2px solid rgba(187, 200, 207, 0.44);
+    padding: 20px 20px 0px 10px;
+    border-radius: 15px;
+    width: 70%;
+    
+    margin-left: 15%;
+   
 }
 .dt{
     line-height: 8px;
@@ -92,6 +94,7 @@ body{
 .dt p{
     color: green;
     font-weight: bold;
+    margin-bottom: 0%;
 }
 .dt span{
     color: rgb(239, 4, 4);
@@ -99,25 +102,16 @@ body{
 .dt h3{
     color: rgb(7, 65, 254);
 }
-.ct{
-    display: grid;
-    grid-template-columns: 8% 70% 30%;
-}
-.ct h3{
-    margin-top: 0%;
-    margin-left: 0%;
-    color: blue;
-}
-.ct button{
+button{
+    margin-left: 40%;
+    margin-top: 20px;
     background-color: aliceblue;
-    color: rgb(135, 133, 133);
-    width: 150px;
-    border-color: blue;
-}
-progress{
-    color: rgb(238, 238, 241);
-    height: 25%;
     
+    background-color: rgb(91, 122, 247);
+    width: 200px;
+}
+.body{
+margin-top: 10%;
 }
 @media screen and (max-width:925px){
     #gt{
@@ -129,21 +123,19 @@ progress{
         
     }
     #r1{
-        margin: 10px 0px 10px 250px;
+        margin: 10px 0px 10px 130px;
     }
     #r2{
         margin: 10px 30px
     }
-    
-    .h{
-        font-weight: bold;
-        display: grid;
-        grid-template-columns: 330px 170px 100px ;
-    }
+    .body{
+        margin-top: 18%;
+        }
+   
     .h3{
         font-weight:600;
         display: grid;
-        grid-template-columns: 400px 320px ;
+        grid-template-columns: 300px 200px 200px;
         font-size: 15;
         color: rgb(150, 154, 152);
     
@@ -152,7 +144,7 @@ progress{
     .header{
    
         display: grid;
-        grid-template-columns: 300px 380px 10px ;
+        grid-template-columns: 340px 420px 10px ;
     }
     .bt{
         

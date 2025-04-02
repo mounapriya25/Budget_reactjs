@@ -8,10 +8,10 @@ import Trail from './buget/Trail'
 import Records from './buget/Records';
 import Analysis from './buget/Data';
 import Budget from './buget/Budget';
-import Account from './buget/wallet';
 import Category from './buget/Category';
 import Dashboard from './buget/D';
 import Add from './buget/Add';
+import Amount from './buget/amount';
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 
 
@@ -28,10 +28,11 @@ function App() {
           <Route path="/record" element={<Records/>}></Route>
           <Route path="/analysis" element={<Analysis/>}></Route>
           <Route path="/budget" element={<Budget/>}></Route>
-          <Route path="/account" element={<Account/>}></Route>
           <Route path="/categories" element={<Category/>}></Route>
           <Route path="/data" element={<Dashboard/>}></Route>
           <Route path="/add" element={<Add/>}></Route>
+          <Route path="/amount" element={<Amount/>}></Route>
+
         </Routes>
       </Router>
       

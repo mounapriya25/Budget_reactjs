@@ -28,10 +28,12 @@ function Budget() {
           <div className=' h3' style={{lineHeight:"20px"}}>
             <div><span id='r1'>TOTAL BUDGET</span> </div>
             <div ><span  id='r2'>TOTAL SPENT</span></div>
+            <div ><span  id='r2'>TOTAL AMOUNT</span></div>
           </div>
           <div className='h3 h4' style={{lineHeight:"30px"}}>
             <div><span  id='r1'style={{ color:" rgb(15, 161, 71)"}}><span>0.00</span>$</span></div>
             <div><span id='r2' style={{ color:" rgb(247, 5, 5)"}}><span>0.00</span>$</span></div>
+            <div><span  id='r2'style={{ color:" rgb(15, 161, 71)"}}><span>0.00</span>$</span></div>
           </div>
 
           {/* bottom icons*/}

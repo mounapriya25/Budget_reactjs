@@ -23,6 +23,9 @@ import MoneyBagOutlined from "@mui/icons-material/MonetizationOnOutlined";
 import DonutSmallOutlined from "@mui/icons-material/DonutSmallOutlined";  // Donut chart
 import DataUsageOutlined from "@mui/icons-material/DataUsageOutlined";    // Data usage icon
 
+
+import Dot from "@mui/icons-material/MoreHoriz";
+
  // Calculator Icon
 function Trail() {
     return (
@@ -108,6 +111,11 @@ function Trail() {
             <div>
                 <DataUsageOutlined style={{ fontSize: 50, color: "#2196F3" }} />
                 <p>Data</p>
+            </div>
+
+            <div>
+                <Dot style={{ fontSize: 50, color: "#2196F3" }} />
+                <p>Dot</p>
             </div>
         </div>
     );
