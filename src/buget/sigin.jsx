@@ -1,6 +1,7 @@
 import React from 'react'
 import './lauth.css'
-import {useEffect,useState ,useNavigate} from 'react'
+import {useEffect,useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 function Sigin() {
@@ -17,7 +18,7 @@ function Sigin() {
         if(resp.data.message=="Sucessfully sigin"){
             nav("/home")
         }
-
+        localStorage.setItem("usem","mounaprikanikireddygari@gmail.com")
     }
     function sfrm(e){
         e.preventDefault()
