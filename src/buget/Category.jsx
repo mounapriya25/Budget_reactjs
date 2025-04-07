@@ -19,7 +19,7 @@ function Category() {
     email:"mounaprikanikireddygari@gmail.com",
     uid:"",
     name:"",
-    type:"income",
+    type:"Income",
     icon:""
   })
 
@@ -54,7 +54,7 @@ function Category() {
   const  getIncomeCategories=()=> {
     //for arrays 
     return uscat
-      .filter((item) => item.type === "income")
+      .filter((item) => item.type === "Income")
       .map((item) => (
         <div className='details' key={item.name} style={{paddingBottom:0}}>
            <div><img src={item.icon} alt={item.name} width={50} style={{borderRadius:"30px"}} /></div> 
@@ -73,7 +73,7 @@ function Category() {
 
 
   const getExpCat=()=>{
-    return uscat.filter((i)=>i.type === "expense").map((i)=>(
+    return uscat.filter((i)=>i.type === "Expense").map((i)=>(
       <div className='details' key={i.name} style={{paddingBottom:0}}>
       <div><img src={i.icon} alt={i.name} width={50} style={{borderRadius:"30px"}} /></div> 
       <div className='dt' ><h3 style={{paddingTop:20,color:"hsl(240, 96.10%, 49.80%)"}}>{i.name}</h3></div>
@@ -89,10 +89,7 @@ function Category() {
   }
 //add button
 const add=()=>{
-  document.getElementById("addinp").style.display="block";
-  
-  
-     
+  document.getElementById("addinp").style.display="block";  
 }
 
 
@@ -172,9 +169,9 @@ function eidt(e,id,name,type,icon){
           <span id='r2'>TOTAL AMOUNT</span>
         </div>
         <div className='h3 h4' style={{ lineHeight: "10px" }}>
-          <span id='r1a' style={{ color: "rgb(15, 161, 71)" }}>0.00$</span>
-          <span id='r2a' style={{ color: "rgb(247, 5, 5)" }}>0.00$</span>
-          <span id='r2a' style={{ color: "rgb(15, 161, 71)" }}>0.00$</span>
+          <span id='r1a' style={{ color: "rgb(15, 161, 71)" }}>0.00₹</span>
+          <span id='r2a' style={{ color: "rgb(247, 5, 5)" }}>0.00₹</span>
+          <span id='r2a' style={{ color: "rgb(15, 161, 71)" }}>0.00₹</span>
         </div>
       </div>
 
@@ -214,8 +211,8 @@ function eidt(e,id,name,type,icon){
         <form onSubmit={formsub} >
             {/*checked attribute is used for checkboxes and radio buttons to control their state dynamically.we must use checked  to explicitly control their selection.*/}
             <div class="radio-container" >
-                <label><input type="radio" name="type" value="income" onChange={inpfrm} checked={frm.type==="income"} />INCOME</label>
-                <label><input type="radio" name="type" value="expense" onChange={inpfrm}  checked={frm.type==="expense"}/>EXPENSES</label>
+                <label><input type="radio" name="type" value="Income" onChange={inpfrm} checked={frm.type==="Income"} />INCOME</label>
+                <label><input type="radio" name="type" value="Expense" onChange={inpfrm}  checked={frm.type==="Expense"}/>EXPENSES</label>
                 
             </div>
             <label>Name : </label>
@@ -232,7 +229,7 @@ function eidt(e,id,name,type,icon){
     
 
   </div>
-  );
+  )
 }
 
 export default Category;

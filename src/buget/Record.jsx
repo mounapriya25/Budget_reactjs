@@ -1,5 +1,5 @@
 import React from 'react';
-import './record.css';
+import './Record.css';
 import Menu from '@mui/icons-material/MenuOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
@@ -51,9 +51,9 @@ function Records() {
           <div>BALANCE</div>
         </div>
         <div className='incomename'>
-          <span style={{ color: 'rgb(247, 5, 5)' }}  >0.00$</span>
-          <span style={{ color: 'rgb(15, 161, 71)' }}>0.00$</span>
-          <span style={{ color: 'rgb(247, 5, 5)' }}>0.00$</span>
+          <span style={{ color: 'rgb(247, 5, 5)' }}  >0.00₹</span>
+          <span style={{ color: 'rgb(15, 161, 71)' }}>0.00₹</span>
+          <span style={{ color: 'rgb(247, 5, 5)' }}>0.00₹</span>
         </div>
         </div>
         
@@ -92,6 +92,7 @@ function Records() {
       <div className="body">
         <h3>Mar 25, Tuesday</h3>
         <hr style={{ color: 'green', marginBottom: 0 }} />
+
         <div>
           <div className="lab">
             <div className="labels">
@@ -104,22 +105,12 @@ function Records() {
               <p>home</p>
             </div>
             <div style={{ float: 'right', color: 'red', margin: '15px 18px' }} className="amt">
-              0000.0$
+              0000.0₹
             </div>
           </div>
 
-          <div className="lab">
-            <div className="labels">
-              <DataUsageOutlined style={{ fontSize: '30px', margin: '10px' }} />
-            </div>
-            <div className="labels name">
-              <p style={{ fontSize: '18px', marginTop: '15px', fontWeight: 'bold', color: 'green' }}>
-                Home
-              </p>
-              <p>home</p>
-            </div>
-            <div style={{ float: 'right', color: 'red', margin: '15px 18px' }}>0000.0$</div>
-          </div>
+          
+            
         </div>
       </div>
     </div>

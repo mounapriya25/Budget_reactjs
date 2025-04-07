@@ -11,6 +11,7 @@
     border: 2px solid rgb(208, 218, 232);
     box-shadow: 2px 2px 12px 2px rgb(150, 199, 239);
 }
+
 .h1{
     float: left;
     font-weight: bold;
@@ -66,14 +67,45 @@ form{
     font-size: 15px;
     padding: 5px;
 }
-#amount{
+.amount{
     padding: 20px;
     width: 400px;
     margin: 10px 10px 10px 0px;
 }
+.butclick1 ,.butclick2{
+    display: none;
+    border: 2px solid rgb(203, 199, 199);
+    width: 500px;
+    height: 400px;
+    position:absolute;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    left: 20%;
+    top: 25%;
+    background-color: white;
+    padding: 40px 10px 30px 10px;
+    box-shadow: 2px 2px 12px 2px rgb(214, 210, 210);
+}
+.butclick1{
+    font-size: larger;
+    height: 350px;
+}
+
+.cat{
+   
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    
+}
+#catgy:hover .butclick2{
+    display: block;
+}
+#act:hover .butclick1{
+    display: block;
+}
 @media screen  and (max-width:925px) {
     .box{
-        position: fixed;
+        
         background-color: rgb(254, 254, 254);
         margin:0px 0px;
         height:100%;
@@ -110,13 +142,13 @@ form{
     
     .radio-container label {
         display: flex;
-        margin: 0px 85px 0px 0px; 
+        margin: 0px 85px 0px 10px; 
         align-items: center; /* Center the radio button and label text vertically */
     }
     
     .radio-container input[type="radio"] {
        
-        margin: 5px 5px 0px 0px;   /* Control space between the button and label text */
+        margin: 5px 5px 0px 30px;   /* Control space between the button and label text */
     }
     
     form{

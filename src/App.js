@@ -5,13 +5,14 @@ import Sigin from './buget/sigin';
 import Setpass from './buget/setpass';
 import Home from './buget/home';
 import Trail from './buget/Trail'
-import Records from './buget/Records';
+import Records from './buget/Record';
 import Analysis from './buget/Data';
 import Budget from './buget/Budget';
 import Category from './buget/Category';
 import Dashboard from './buget/D';
 import Add from './buget/Add';
 import Amount from './buget/amount';
+import Rd from './buget/rd';
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 
 
@@ -33,6 +34,8 @@ function App() {
           <Route path="/data" element={<Dashboard/>}></Route>
           <Route path="/add" element={<Add/>}></Route>
           <Route path="/amount" element={<Amount/>}></Route>
+          <Route path="/rd" element={<Rd/>}></Route>
+
 
         </Routes>
       </Router>

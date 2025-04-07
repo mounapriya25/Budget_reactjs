@@ -64,7 +64,7 @@ body{
 }
 
 #icon{
-    margin-left: 200px;
+    margin-left: 170px;
 }
 .body{
     margin-top:  18%;
@@ -72,7 +72,7 @@ body{
 #r1{
     margin: 10px 0px 10px 530px;
 }
-#details{
+.detail{
     display: grid;
     grid-template-columns: 13% 80% 5%;
     margin-top: 20px;
@@ -90,6 +90,7 @@ body{
 .dt h3{
     margin-top: 0%;
     margin-left: 0%;
+   
 }
 .dt p{
     color: green;
@@ -112,6 +113,58 @@ button{
 }
 .body{
 margin-top: 10%;
+}
+.addinp{
+    z-index: 1;
+    position: fixed;
+    top: 120px ;
+    left: 350px;
+    display: none;
+    margin: 70px 70px 200px  90px;
+    border: 2px solid rgb(193, 190, 190);
+    width: 630px;
+    padding-left: 0cap;
+    height: 390px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 12px 5px rgb(178, 178, 180);
+}
+.lbt{
+    width: 80px;
+    
+}
+.inp{
+    width:340px ;
+    margin-left: 10px;
+}
+.icn{
+    width:410px ;
+    height: 100px;
+    border:  1px solid rgb(167, 166, 166);
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns:repeat(12,1fr) ;
+    column-gap:10px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    padding: 10px 10px 10px 10px;
+}
+
+.dropdn{
+    display: none;
+    position: absolute;
+    right: 20px;
+    z-index: 10;
+    background-color: aliceblue;
+    border: 2px solid rgb(218, 213, 213);
+    box-shadow: 2px 2px 12px 5px rgb(178, 178, 180);
+    width:200px;
+    padding:10px;
+    line-height: 30px;
+    font-weight:600;
+}
+.dot:hover .dropdn{
+    display: block;
 }
 @media screen and (max-width:925px){
     #gt{
@@ -153,8 +206,27 @@ margin-top: 10%;
         
     }
     #icon{
-        margin-left:50px;
+        margin-left:30px;
     }
-
+    .addinp{
+        top: 100px ;
+        margin: 70px 70px 200px  90px;
+        width: 75%;
+        padding-left: 0cap;
+        height: 385px;
+        left: 10px;
+        
+    }
+    .inp{
+        width:340px ;
+        margin-left: 10px;
+    }
+    #add{
+        background-color: rgb(17, 60, 232);
+        margin-bottom:200px ;
+        margin-top: 70px;
+        margin-left: 40%;
+    }
+    
     
 }
