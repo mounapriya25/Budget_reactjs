@@ -5,7 +5,7 @@ import Sigin from './buget/sigin';
 import Setpass from './buget/setpass';
 import Home from './buget/home';
 import Trail from './buget/Trail'
-import Records from './buget/Record';
+
 import Analysis from './buget/Data';
 import Budget from './buget/Budget';
 import Category from './buget/Category';
@@ -13,6 +13,7 @@ import Dashboard from './buget/D';
 import Add from './buget/Add';
 import Amount from './buget/amount';
 import Rd from './buget/rd';
+
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 
 
@@ -27,7 +28,7 @@ function App() {
           <Route path='/setpasswrd' element={<Setpass/>}></Route>
           <Route path="/home" element={<Home/>}></Route>
           <Route path="/t" element={<Trail/>}></Route>
-          <Route path="/record" element={<Records/>}></Route>
+         
           <Route path="/analysis" element={<Analysis/>}></Route>
           <Route path="/budget" element={<Budget/>}></Route>
           <Route path="/categories" element={<Category/>}></Route>

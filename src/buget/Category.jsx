@@ -116,11 +116,11 @@ async function formsub(e){
   document.getElementById("addinp").style.display="none";
   document.getElementById("bd").style.opacity=1;
   if(operation==="Add"){
-    const res=await axios.post("http://localhost:8000/addcat",frm);
+    const res=await axios.post("http://localhost:8000/addCat",frm);
     console.log(res.data)
   }
   else{
-    const ures=await axios.put("http://localhost:8000/update",frm);
+    const ures=await axios.put("http://localhost:8000/updateCat",frm);
     console.log(ures.data)
   }
   getCat();
@@ -146,7 +146,7 @@ function eidt(e,id,name,type,icon){
  async function delt(e,id){
   e.preventDefault();
   console.log(id)
-  const res=await axios.delete("http://localhost:8000/delete",{data:{id}})
+  const res=await axios.delete("http://localhost:8000/deleteCat",{data:{id}})
   console.log(res.data)
   getCat();
 

@@ -1,6 +1,6 @@
 
 body{
-    background-color: aliceblue;
+    background-color: white;
 }
 .header{
     position: fixed;
@@ -8,7 +8,7 @@ body{
     width: 100%;
     display: grid;
     grid-template-columns: 690px 760px 10px ;
-    color: rgb(234, 242, 238);
+    color: white;
     background-color: rgb(6, 54, 246);
 }
 .header2{
@@ -16,7 +16,7 @@ body{
     top: 8%;
     width: 100%;
     color: rgb(49, 150, 88);
-    background-color: rgb(245, 246, 248);
+    background-color: rgb(246, 248, 249);
     border: 2px white;
     border-style: none none solid none;
     box-shadow:2px 2px 12px 2px rgb(201, 199, 199);
@@ -54,7 +54,8 @@ body{
     bottom: 0%;
     padding: 10px 30px;
     width:100% ;
-    border: 2px white;
+    background-color: white;
+    border: 2px rgb(240, 243, 244);
     border-style: none none solid none;
     box-shadow:2px 2px 12px 2px rgb(201, 199, 199);
 }
@@ -74,6 +75,7 @@ body{
 .body{
     margin-top: 29%;
 }
+
 
 #details{
     display: grid;
@@ -114,11 +116,66 @@ body{
     width: 150px;
     border-color: blue;
 }
-progress{
-    color: rgb(238, 238, 241);
-    height: 25%;
+.bdData{
+    display: grid;
+    grid-template-columns: 15% 75% 10%;
+    border: 2px solid rgb(181, 178, 178);
+    color: black;
+    margin:10px 10px 10px 10%;
+    width: 75%;
+    font-size:17px;
+    border-radius: 5px;
+}
+.catB{
+    display: grid;
+    grid-template-columns: 15% 59% 15%;
+    color: black;
+    margin:10px;
+    border: 2px solid rgb(181, 178, 178);
+    background-color: white;
+    padding:0px 10px 12px ;
+    font-size:18px;
+    border-radius: 5px;
+}
+
+.form{
+    z-index: 10;
+    position: fixed;
+    top:30%;
+    left:10%;
+    border: 2px solid rgb(208, 204, 204);
+    background-color: white;
+    box-shadow:2px 2px 12px 12px rgb(137, 136, 136);
+    width: 400px;
+    height: 380px;
+    margin-left: 25%;
+}
+.catfrm{
+    border: 2px solid rgb(140, 140, 140);
+    background-color: white;
+    margin: 10% 0% 8%;
+    width: 85%;
+    padding: 0%;
+    
     
 }
+.drop{
+    display: none;
+    position: absolute;
+    right: 22%;
+    z-index: 10;
+    background-color: rgb(253, 254, 255);
+    border: 2px solid rgb(218, 213, 213);
+    box-shadow: 2px 2px 12px 5px rgb(195, 195, 197);
+    width:200px ;
+    padding:10px ;
+    line-height: 30px;
+    font-weight:600;
+}
+.dot:hover .drop{
+    display: block;
+}
+
 @media screen and (max-width:925px){
     #gt{
         margin:100px 250px;
@@ -143,7 +200,7 @@ progress{
     .h3{
         font-weight:600;
         display: grid;
-        grid-template-columns: 400px 320px ;
+        grid-template-columns: 600px 320px ;
         font-size: 15;
         color: rgb(150, 154, 152);
     
@@ -163,6 +220,15 @@ progress{
     #icon{
         margin-left:50px;
     }
-
+    .form{
+        left:0%
+    }
+    .catB{
+        width:600px;
+        margin-left:70px;
+    }
+    .drop{
+        right: 5%;
+    }
     
 }
