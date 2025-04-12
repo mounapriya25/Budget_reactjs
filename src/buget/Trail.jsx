@@ -28,6 +28,8 @@ import Dot from "@mui/icons-material/MoreHoriz";
 
  // Calculator Icon
 function Trail() {
+    const u=localStorage.getItem("userEmail")
+    console.log(u,"in trail");
     return (
         <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", padding: "20px" }}>
              <h1>Budget Planner</h1>
@@ -117,6 +119,7 @@ function Trail() {
                 <Dot style={{ fontSize: 50, color: "#2196F3" }} />
                 <p>Dot</p>
             </div>
+           
         </div>
     );
 }

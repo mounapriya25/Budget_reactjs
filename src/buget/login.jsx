@@ -25,11 +25,12 @@ function Login() {
         console.log(form.email,form.password)
         const resp=await axios.post("http://localhost:8000/loginform",form)
         if(resp.data.message=="success"){
-            localStorage.setItem("token",resp.data.token)
-            const tk=localStorage.getItem("token")
-            const rp=await axios.post("http://localhost:8000/home",{},{headers:{Authorization:`Bearer ${tk}`}}) 
+            const rp=await axios.post("http://localhost:8000/home",{},{headers:{Authorization:`Bearer ${resp.data.token}`}}) 
             console.log(rp)
             if(rp.data.message=="successfully login"){
+                localStorage.setItem("userEmail",rp.data.ud.email)
+                const u=localStorage.getItem("userEmail")
+                console.log(u);
                 nav("/home")
             }
         }

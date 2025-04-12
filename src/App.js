@@ -13,7 +13,7 @@ import Dashboard from './buget/D';
 import Add from './buget/Add';
 import Amount from './buget/amount';
 import Rd from './buget/rd';
-
+import Date from './buget/Dateft'
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 
 
@@ -36,6 +36,7 @@ function App() {
           <Route path="/add" element={<Add/>}></Route>
           <Route path="/amount" element={<Amount/>}></Route>
           <Route path="/rd" element={<Rd/>}></Route>
+          <Route path="/d" element={<Date/>}></Route>
 
 
         </Routes>

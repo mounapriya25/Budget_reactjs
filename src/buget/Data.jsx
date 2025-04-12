@@ -10,15 +10,23 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Label } from "recharts";
+import dayjs from 'dayjs';
+import  Dateft from './Dateft.jsx'
 
 function Analysis() {
   const [data, setData] = useState([]);
   const [total, settotal]=useState(0);
+  const email=localStorage.getItem("userEmail")
+  console.log(email,"in home ");
+  const income=localStorage.getItem("Income")
+  const expense=localStorage.getItem("Expense")
+  
 
   // Fetch expenses from the backend API
   const fetchExpenses = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/expensesOverveiw");
+      console.log(email)
+      const response = await axios.post("http://localhost:8000/expensesOverveiw",{email});
       setData(response.data.rdE); // Set expenses data from MongoDB
     } catch (error) {
       console.error("Error fetching expenses:", error);
@@ -40,6 +48,8 @@ function Analysis() {
   settotal(t);
   console.log(total,"total")
   }
+
+ 
   const COLORS = ["rgb(6, 198, 241)","rgb(6, 225, 65)","rgba(247, 243, 1, 0.89)","rgba(248, 7, 59, 0.89)",,"rgba(246, 152, 3, 0.94)"]; // Colors for pie segments
   //peichart for Expenses
   function RenderPieChart(){
@@ -123,46 +133,58 @@ function rnBar(){
 
         {/* date */}
         <div className='header2'>
-          <div className='h'>
+          <div>{/*
             <div><span id='gt' style={{ fontSize: 30 }}>&lt;</span> </div>
-            <div  id='date'style={{ fontSize: 20}}>Mar 24,2025</div>
-            <div><span  id='lt' style={{ fontSize: 30}}>&gt;</span> </div>
+            <div  id='date'style={{ fontSize: 20}}>{ftHeadDate()}</div>
+            <div><span  id='lt' style={{ fontSize: 30}}>&gt;</span> </div>*/}
+            <Dateft/>
           </div>
-          <div className=' h3' style={{lineHeight:"20px"}}>
-            <div><span id='r1'>EXPENSE</span> </div>
-            <div ><span  id='r2'> INCOME</span></div>
-            <div><span  id='r2'>BALANCE</span> </div>
-          </div>
-          <div className='h3 h4' style={{lineHeight:"30px" ,marginBottom:"5px"}}>
-            <div><span id='r1' style={{ color:" rgb(247, 5, 5)"}} ><span>0.00</span>₹</span></div>
-            <div><span  id='r2'style={{ color:" rgb(15, 161, 71)"}}><span>0.00</span>₹</span></div>
-            <div><span id='r2' style={{ color:" rgb(247, 5, 5)"}}><span>0.00</span>₹</span></div>
-          </div>
-
+          <div className='incmh'>
+        <div className='incmname'>
+          <div >EXPENSES</div>
+          <div>INCOME</div>
+          <div>BALANCE</div>
+        </div>
+        <div className='incmname'>
+          <span style={{ color: 'rgb(247, 5, 5)' }}  >{expense?expense:"0"}₹</span>
+          <span style={{ color: 'rgb(15, 161, 71)' }}>{income?income:"0"}₹</span>
+          <span style={{ color: 'rgb(247, 5, 5)' }}>{income-expense?income-expense:"0"}₹</span>
+        </div>
+        </div>
+       
+     
           {/* bottom icons*/}
         </div>
         <div className='bottom'>
           <div className='bt'  id="icon" >
+          <a href="http://localhost:3000/rd">
             <FactCheckOutlinedIcon     style={{fontSize:"30px"}}/>
             <p>Records</p>
+            </a>
           </div>
           <div  className='bt'  style={{ color:"blue"}}>
             <DataUsageOutlined   style={{fontSize:"30px"}} />
             <p>Analysis</p>
           </div>
           <div className='bt' >
+          <a href="http://localhost:3000/budget">
             <MoneyBagOutlined   style={{fontSize:"30px"}} />
             <p>Budget</p>
+            </a>
           </div>
           <div  className='bt' >
+          <a href="http://localhost:3000/amount">
             <AccountBalanceWalletOutlinedIcon   style={{fontSize:"30px"}}  />
             <p>Accounts</p>
+            </a>
           </div>
           <div style={{float:"left"}} className='bt' >
+          <a href="http://localhost:3000/categories">
                 <CategoryOutlinedIcon   style={{fontSize:"30px"}} />
                 <p>Categories</p>
+                </a>
             </div>
-          
+        
         </div>
         <div ><button className='add' style={{backgroundColor:'white',color:"blue"}}>+</button></div>
 

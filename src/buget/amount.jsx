@@ -10,8 +10,9 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import axios from "axios";
 import Dot from "@mui/icons-material/MoreHoriz";
 function Amount() {
-    const em="mounaprikanikireddygari@gmail.com";
-    
+   
+    const em=localStorage.getItem("userEmail")
+    console.log(em,"in category ");
     const [fm,setfm]=useState({
       email:em,
       id:"",
@@ -21,10 +22,17 @@ function Amount() {
     })
     const [acc,setAcc]=useState([])
     const [operation ,setOperation]=useState("Add")
+    const [totalAmount ,setTotalAmount]=useState(0)
+    const income=localStorage.getItem("Income")
+  const expense=localStorage.getItem("Expense")
 
   useEffect(()=>{
     getAm()
   },[])
+  useEffect(()=>{
+   totalAm()
+  },[acc])
+  
 
   async function getAm(){
     try{
@@ -41,6 +49,12 @@ function Amount() {
       console.log(err)
     }
   }
+  function totalAm(){
+     const am= acc.reduce((sum,i)=>sum+i.amount,0)
+     setTotalAmount(am)
+     console.log(totalAmount)
+     localStorage.setItem("amount",am)
+  }
 
   const  disacc=()=>{
     console.log(acc,"body")
@@ -50,7 +64,7 @@ function Amount() {
       <div style={{position:'relative',bottom:"10px"}} ><img src={i.icon} alt={i.name} width={50} style={{borderRadius:"30px"}}  /></div> 
       <div className='dt' style={{marginBottom:20}}>
         <h3 style={{textAlign:"left"}}>{i.name}</h3>
-        <p>Limit : <span>0.0</span><span>₹</span></p>
+        <p>Balance : <span>{i.amount}</span><span>₹</span></p>
       </div>
        <div className='dot'><div><Dot style={{ fontSize: 30, color: "rgb(5, 5, 251)" }} /></div>
         <div className='dropdn'>
@@ -125,39 +139,47 @@ function Amount() {
         {/* date */}
         <div className='header2'>
          
-          <div className=' h3' style={{lineHeight:"20px",marginTop:15,color:" rgb(82, 83, 84)"}}>
-            <div><span id='r1'>EXPENSE SO FAR</span> </div>
-            <div ><span  id='r2'>INCOME SO FAR</span></div>
-            <div ><span  id='r2'>TOTAL AMOUNT</span></div>
+          <div className=' ah3' style={{lineHeight:"10px",marginTop:25,color:" rgb(82, 83, 84)",fontWeight:"bold"}}>
+            <div><span className='r1'>EXPENSE SO FAR</span> </div>
+            <div ><span  className='r2'>INCOME SO FAR</span></div>
+            <div ><span  className='r2'>TOTAL AMOUNT</span></div>
           </div>
-          <div className='h3 h4' style={{lineHeight:"30px"}}>
-            <div><span  id='r1'style={{ color:" rgb(15, 161, 71)"}}><span>0.00</span>₹</span></div>
-            <div><span id='r2' style={{ color:" rgb(247, 5, 5)"}}><span>0.00</span>₹</span></div>
-            <div><span  id='r2'style={{ color:" rgb(15, 161, 71)"}}><span>0.00</span>₹</span></div>
+          <div className='ah3 h4' style={{lineHeight:"38px"}}>
+            <div><span  className='r1'style={{ color:" rgb(15, 161, 71)"}}><span>{expense?expense:"0"}</span>₹</span></div>
+            <div><span className='r2' style={{ color:" rgb(247, 5, 5)"}}><span>{income?income:"0"}</span>₹</span></div>
+            <div><span  className='r2'style={{ color:" rgb(15, 161, 71)"}}><span>{totalAmount}</span>₹</span></div>
           </div>
 
           {/* bottom icons*/}
         </div>
         <div className='bottom'>
           <div className='bt'  id="icon" >
+          <a href="http://localhost:3000/rd">
             <FactCheckOutlinedIcon     style={{fontSize:"30px"}} />
             <p>Records</p>
+            </a>
           </div>
           <div  className='bt'>
+          <a href="http://localhost:3000/analysis">
             <DataUsageOutlined   style={{fontSize:"30px"}} />
-            <p>Data</p>
+            <p>Analysis</p>
+            </a>
           </div>
           <div className='bt' >
+          <a href="http://localhost:3000/budget">
             <MoneyBagOutlined   style={{fontSize:"30px"}} />
             <p>Budget</p>
+            </a>
           </div>
           <div  className='bt' style={{color:"blue"}}>
             <AccountBalanceWalletOutlinedIcon   style={{fontSize:"30px"}}  />
             <p>Account</p>
           </div>
           <div style={{float:"left",marginRight:0}}   className='bt'>
+          <a href="http://localhost:3000/categories">
                 <CategoryOutlinedIcon   style={{fontSize:"30px"}} />
                 <p>Categories</p>
+                </a>
             </div>
           
         </div>
@@ -167,7 +189,7 @@ function Amount() {
          <div className='body'>
           <h3 style={{color:"rgb(61, 61, 62)",textAlign:"center"}}>ACCOUNTS</h3>
           <div>{disacc()}</div>
-          <button id='add' onClick={add}>Add New Account</button>
+          <button id='add' className='button' onClick={add}>Add New Account</button>
          </div>
       {/*Add form  */}
       <div className='addinp' id="addinp">
@@ -175,17 +197,17 @@ function Amount() {
               <form onSubmit={formsub} >
                   
                   <label>Name : </label>
-                  <input type='text' placeholder='Untitled' className='inp'  name="name" onChange={inpfrm} value={fm.name}  required/><br/>
+                  <input type='text' placeholder='Untitled' className='inp'  name="name" onChange={inpfrm} value={fm.name}  required style={{marginBottom:10}}/><br/>
 
                   <label>Amount : </label>
-                  <input type='number' placeholder='0' className='inp'  name="amount" onChange={inpfrm} value={fm.amount} style={{width:"200px"}} required/><br/>
+                  <input type='number' placeholder='0' className='inp'  name="amount" onChange={inpfrm} value={fm.amount} style={{width:"200px",marginBottom:10}} required/><br/>
                   
-                  <div className='icn'>
+                  <div className='icn1'>
                       {addicon()}
                   </div>
                   <button style={{backgroundColor:"red",borderColor:"red",borderRadius:5 ,float:"left",margin:"20px 0px 0px 0px"}} className='lbt' onClick={cancel}>Cancle</button>
                   
-                  <button  style={{backgroundColor:"green",borderColor:"green",borderRadius:5 ,float:"right", marginRight:60}} className='lbt' type='submit' >Save</button> 
+                  <button  style={{backgroundColor:"green",borderColor:"green",borderRadius:5 ,float:"right", margin:"20px 60px 0px 0px"}} className='lbt' type='submit' >Save</button> 
               </form>
           </div>
         

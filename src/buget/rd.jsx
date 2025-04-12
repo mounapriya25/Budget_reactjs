@@ -13,12 +13,18 @@ import Edit from '@mui/icons-material/EditOutlined';
 import Close from '@mui/icons-material/CloseOutlined';
 import Arrow from '@mui/icons-material/ArrowForwardOutlined';
 import axios from "axios"
-
+import dayjs from "dayjs"
+import  Dateft from './Dateft.jsx'
 function Rd() {
+  const em=localStorage.getItem("userEmail")
+  console.log(em,"in rd ");
   const [record,setRecord]=useState([])
-  const em="mounaprikanikireddygari@gmail.com";
   const nav=useNavigate()
   const [visibleId, setVisibleId] = useState(null);
+  const [totalAm, setTotalAm] = useState({
+    income:0,
+    expense:0
+  });
   
   
   
@@ -34,14 +40,43 @@ function Rd() {
 
     }
   }
+  const getDate=(date)=>{
+    const dt=dayjs(date).format("YYYY-M-DD")
+    console.log(dt,dayjs().format("YYYY-M-DD"),'kpkkkk')
+    return dt;
+    
+  }
+  const getRecordBydate=()=>{
+    const res=record.filter((i)=>getDate(i.date)===getDate(dayjs()))
+    console.log(res,'kkkkk')
+   // getDate(dayjs("2025-04-12T00:00:00.000Z"))
+    
+  }
   useEffect(()=>{
     getRecord()
+
   },[])
+  useEffect(()=>{
+    
+    total()
+    getRecordBydate()
+  },[record])
   function cancle(e,n){
     e.preventDefault()
     setVisibleId(null)
     
   }
+  //total Expenses
+  function total(){
+    const exp=record.filter((i)=>i.typename==="Expense").reduce((sum,i)=>sum+i.amount,0)
+    const inc=record.filter((i)=>i.typename==="Income").reduce((sum,i)=>sum+i.amount,0)
+    localStorage.setItem("Income",inc)
+    localStorage.setItem("Expense",exp)
+    setTotalAm({income:inc,expense:exp})
+    console.log(inc," exp:",exp,totalAm)
+    
+  }
+
   //date
   function disdate(d){
     const date=new Date(d)
@@ -55,13 +90,15 @@ function Rd() {
     }
     return date.toLocaleDateString("en-US", options)
   }
+ 
+  
   //edit
   function edit(e,id){
 
     const rd=record.find((i)=>i._id===id)
     if (!rd) return;
     const frm={
-        email:"mounaprikanikireddygari@gmail.com",
+        email:em,
         id:rd._id,
         type:rd.typename,
         catId:rd.category._id,
@@ -120,6 +157,9 @@ function Rd() {
       )
     }
   }
+  const formatDt=(date)=>{
+    return dayjs(date).format('MMMM DD,dddd')
+  }
   const dispTRanRd=(id)=>{
     const rd=record.find((i)=>i._id===id)
     console.log(id,rd,"heiiii")
@@ -133,8 +173,6 @@ function Rd() {
                 <p style={{float:"left",color:"rgb(89, 91, 94)"}}>{rd.account2.name}</p>
                
             </div>
-              
-            
        
       )
     }
@@ -181,11 +219,12 @@ function Rd() {
         <div className='trd'>
           <div className="labs" onClick={(e)=>{e.preventDefault(); setVisibleId(i._id)}}>
             <div className="labels">
-            <div style={{position:'relative',bottom:"10px",top:"0px"}} ><img src={i.category?i.category.icon:"http://localhost:8000/images/icons8-exchange-96.png"} alt={i.name} width={50} style={{borderRadius:"30px"}}  /></div> 
+            <div style={{position:'relative',bottom:"10px",top:"0px"}} ><img src={(i.typename!=="Transfer")?i.category.icon:"http://localhost:8000/images/icons8-exchange-96.png"} alt={i.name} width={50} style={{borderRadius:"30px"}}  /></div> 
             </div>
             <div className="labels name">
               <p style={{ fontSize: '18px', marginTop: '10px', fontWeight: 'bold', color: 'rgb(6, 54, 246)' }}>
-              {i.category?i.category.name:"Transfer"}
+              {/*{i.category?i.category.name:"Transfer"}*/}
+              {(i.typename!=="Transfer")?i.category.name:"Transfer"}
               </p>
               <div>
                 <div style={{float:"left"}}><img src={i.account1.icon} alt={i.name} width={28} style={{borderRadius:"10px",marginRight:10}}  /></div>
@@ -223,20 +262,22 @@ function Rd() {
 
       {/* Date Section */}
       <div className="header2">
-        <div className="h">
+        <div >
+          {/*
           <div>
-            <span id="gt" style={{ fontSize: 30 }}>
+            <button id="gt" style={{ fontSize: 30 }}>
               &lt;
-            </span>
+            </button>
           </div>
           <div id="date" style={{ fontSize: 20 }}>
-            Mar 24, 2025
+           {headdate()}
           </div>
           <div>
-            <span id="lt" style={{ fontSize: 30 }}>
+            <button id="lt" style={{ fontSize: 30 }}>
               &gt;
-            </span>
-          </div>
+            </button>
+          </div>*/}
+          <Dateft/>
          
         </div>
        
@@ -248,9 +289,9 @@ function Rd() {
           <div>BALANCE</div>
         </div>
         <div className='incomename'>
-          <span style={{ color: 'rgb(247, 5, 5)' }}  >0.00₹</span>
-          <span style={{ color: 'rgb(15, 161, 71)' }}>0.00₹</span>
-          <span style={{ color: 'rgb(247, 5, 5)' }}>0.00₹</span>
+          <span style={{ color: 'rgb(247, 5, 5)' }}  >{totalAm.expense}₹</span>
+          <span style={{ color: 'rgb(15, 161, 71)' }}>{totalAm.income}₹</span>
+          <span style={{ color: 'rgb(247, 5, 5)' }}>{totalAm.income-totalAm.expense}₹</span>
         </div>
         </div>
         </div> 
@@ -258,32 +299,43 @@ function Rd() {
       
       {/* Bottom Icons */}
       <div className="bottom">
-        <div className="bt" id="icon" style={{ color: 'blue' }}>
+        <div className="bt" id="icon" style={{ color: 'blue' }} >
+        
           <FactCheckOutlinedIcon style={{ fontSize: '30px' }} />
           <p>Records</p>
+          
         </div>
-        <div className="bt">
+        <div className="bt" >
+        <a href="http://localhost:3000/analysis">
           <DataUsageOutlined style={{ fontSize: '30px' }} />
           <p>Analysis</p>
+          </a>
         </div>
-        <div className="bt">
+        <div className="bt" >
+        <a href="http://localhost:3000/budget">
           <MoneyBagOutlined style={{ fontSize: '30px' }} />
           <p>Budget</p>
+          </a>
         </div>
-        <div className="bt">
+        <div className="bt" >
+        <a href="http://localhost:3000/amount">
           <AccountBalanceWalletOutlinedIcon style={{ fontSize: '30px' }} />
           <p>Accounts</p>
+          </a>
         </div>
-        <div style={{ float: 'left' }} className="bt">
+        
+        <div style={{ float: 'left' }} className="bt" >
+        <a href="http://localhost:3000/categories">
           <CategoryOutlinedIcon style={{ fontSize: '30px' }} />
           <p>Categories</p>
+          </a>
         </div>
       </div>
       
 
       {/* Body */}
       <div className="body">
-        <h3>Mar 25, Tuesday</h3>
+        <h3>{formatDt(Date.now())}</h3>
         <hr style={{ color: 'green', marginBottom: 0 }} />
 
         <div>{disRd()}</div>

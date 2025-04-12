@@ -25,15 +25,14 @@ body{
     box-shadow:2px 2px 12px 2px rgb(201, 199, 199);
     z-index: 1;
 }
-.h3{
+.ch3{
     display: grid;
     grid-template-columns: 700px 250px 200px;
     font-size: 15;
     font-weight:600;
-    
-    color: rgb(79, 82, 79);
+    color: rgb(87, 150, 108);
 
-}
+}       
 .h4{
     font-size: 15;
     color: red;
@@ -79,20 +78,20 @@ body{
 }
 
 #r1,#r1a{
-    margin: 10px 0px 10px 530px;
+    margin: 10px 0px 10px 450px;
 }
 #r2,#r2a{
     margin: 10px 0px 10px 0px;
 }
 .details{
     display: grid;
-    grid-template-columns: 13% 80% 5%;
+    grid-template-columns: 15px 80% 5%;
     padding: 10px 20px 50px 10px;
-   line-height: 2px;
+    line-height: 2px;
+    width: 50%;
+    margin-left: 28%;
+   
     
-    width: 70%;
-    
-    margin-left: 15%;
    
 }
 .dt{
@@ -104,22 +103,26 @@ body{
     color: rgb(239, 4, 4);
 }
 
-.button{
+/*.button{
     margin-left: 40%;
     margin-top: 20px;
     background-color: aliceblue;
     width: 200px;
-}
-#add{
+}*/
+#add1{
     background-color: rgb(17, 60, 232);
     margin-bottom:200px ;
+    margin-left:42%;
+    padding: 10px;
     margin-top: 70px;
-    margin-left: 45%;
+    width: 200px;
 }
-.body{
-margin-top: 10%;
+
+.body1{
+    margin-top: 80px;
+   
 }
-.addinp{
+.addinp1{
     z-index: 1;
     position: fixed;
     top: 120px ;
@@ -130,6 +133,7 @@ margin-top: 10%;
     width: 550px;
     padding-left: 0cap;
     height: 350px;
+   
     background-color: rgb(255, 255, 255);
     box-shadow: 2px 2px 12px 5px rgb(178, 178, 180);
 }
@@ -151,8 +155,10 @@ margin-top: 10%;
     column-gap:10px;
     overflow-x: scroll;
     overflow-y: hidden;
+   
     scrollbar-width: none;
-    padding: 10px 10px 10px 10px;
+    
+    padding: 10px 40px 10px 10px;
 }
 
 .dropdn{
@@ -188,7 +194,7 @@ margin-top: 10%;
     }
     
    
-    .h3{
+    .ch3{
         font-weight:600;
         display: grid;
         grid-template-columns: 300px 200px 200px;
@@ -214,24 +220,39 @@ margin-top: 10%;
     #icon{
         margin-left:50px;
     }
-    .addinp{
+    .addinp1{
         top: 120px ;
         margin: 70px 70px 200px  90px;
         width: 70%;
         padding-left: 0cap;
         height: 350px;
         left: 10px;
+      
         
     }
     .inp{
         width:340px ;
         margin-left: 10px;
+        margin-top: 0%;
+        margin-bottom: 0px;
     }
-    #add{
+    #add1{
+       
         background-color: rgb(17, 60, 232);
         margin-bottom:200px ;
-        margin-top: 70px;
-        margin-left: 40%;
+        margin-left:35%;
+       
+    }
+    .details{
+        display: grid;
+        grid-template-columns: 15px 80% 5%;
+        padding: 10px 20px 50px 10px;
+        line-height: 2px;
+        width: 70%;
+        margin-left: 15%;
+       
+        
+       
     }
     
 }

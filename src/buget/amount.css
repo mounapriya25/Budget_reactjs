@@ -7,7 +7,7 @@ body{
     top: 0%;
     width: 100%;
     display: grid;
-    grid-template-columns: 690px 750px 10px ;
+    grid-template-columns: 670px 750px 10px ;
     color: rgb(234, 242, 238);
     background-color: rgb(6, 54, 246);
 }
@@ -21,9 +21,9 @@ body{
     border-style: none none solid none;
     box-shadow:2px 2px 12px 2px rgb(201, 199, 199);
 }
-.h3{
+.ah3{
     display: grid;
-    grid-template-columns: 800px 250px 200px;
+    grid-template-columns: 700px 250px 200px;
     font-size: 15;
     font-weight:600;
     color: rgb(87, 150, 108);
@@ -69,8 +69,8 @@ body{
 .body{
     margin-top:  18%;
 }
-#r1{
-    margin: 10px 0px 10px 530px;
+.r1{
+    margin: 10px 0px 10px 450px;
 }
 .detail{
     display: grid;
@@ -103,17 +103,21 @@ body{
 .dt h3{
     color: rgb(7, 65, 254);
 }
-button{
-    margin-left: 40%;
+.button{
+    margin-left: 30%;
     margin-top: 20px;
     background-color: aliceblue;
     
-    background-color: rgb(91, 122, 247);
+    background-color: rgb(25, 5, 245);
     width: 200px;
 }
-.body{
-margin-top: 10%;
+#add{
+    background-color: rgb(17, 60, 232);
+    margin-bottom:200px ;
+    margin-top: 70px;
+    margin-left: 40%;
 }
+
 .addinp{
     z-index: 1;
     position: fixed;
@@ -136,8 +140,8 @@ margin-top: 10%;
     width:340px ;
     margin-left: 10px;
 }
-.icn{
-    width:410px ;
+.icn1{
+    width:85% ;
     height: 100px;
     border:  1px solid rgb(167, 166, 166);
     border-radius: 5px;
@@ -185,7 +189,7 @@ margin-top: 10%;
         margin-top: 18%;
         }
    
-    .h3{
+    .ah3{
         font-weight:600;
         display: grid;
         grid-template-columns: 300px 200px 200px;
@@ -225,8 +229,10 @@ margin-top: 10%;
         background-color: rgb(17, 60, 232);
         margin-bottom:200px ;
         margin-top: 70px;
-        margin-left: 40%;
+        margin-left: 35%;
     }
-    
+    .r1{
+        margin: 10px 0px 10px 100px;
+    }
     
 }

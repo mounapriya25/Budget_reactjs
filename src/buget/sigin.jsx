@@ -16,9 +16,12 @@ function Sigin() {
         console.log(form)
         const resp=await axios.post("http://localhost:8000/siginform",form)
         if(resp.data.message=="Sucessfully sigin"){
+            localStorage.setItem("userEmail",resp.data.us.email)
+            const u=localStorage.getItem("userEmail")
+            console.log(u);
             nav("/home")
         }
-        localStorage.setItem("usem","mounaprikanikireddygari@gmail.com")
+        
     }
     function sfrm(e){
         e.preventDefault()

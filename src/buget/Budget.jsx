@@ -9,45 +9,56 @@ import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import MoneyBagOutlined from "@mui/icons-material/MonetizationOnOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import Dot from "@mui/icons-material/MoreHoriz";
-
-
-
+import  Dateft from './Dateft.jsx'
 
 function Budget() {
-  const em = "mounaprikanikireddygari@gmail.com" ;
+  const em=localStorage.getItem("userEmail")
+  console.log(em,"in category ");
   const [tran, setTran]=useState([])
   const [Cat, setCat]=useState([])
   const [Bud, setBud]=useState([])
   const [visb, setvisb]=useState(null)
   const [frm, setFrm]= useState({
-        email:"mounaprikanikireddygari@gmail.com",
+        email:em,
         category:null,
         limit:0,
         spent:0,
         id:null
   })
+ 
   const [operation ,setOperation]=useState("Set")
+  const [totalBg ,setTotalBg]=useState({
+    limit:0,
+    spent:0
+  })
   
 
   async function getTranRd(){
-    const res = await axios.get("http://localhost:8000/getTranBg");
+    const res = await axios.post("http://localhost:8000/getTranBg",{em});
     console.log(res.data.tn)
     setTran(res.data.tn)
   }
   async function getCat(){
-    const res = await axios.get("http://localhost:8000/getCatBg");
+    const res = await axios.post("http://localhost:8000/getCatBg",{em});
     console.log(res.data)
     setCat(res.data.cat)
   }
   async function getBugetRd(){
-    const res = await axios.get("http://localhost:8000/getBudget");
+    const res = await axios.post("http://localhost:8000/getBudget",{em});
     console.log(res.data.bg)
     setBud(res.data.bg)
+  }
+  function total(){
+    const limit=Bud.reduce((sum,i)=>sum+i.limit,0)
+    const spent=Bud.reduce((sum,i)=>sum+i.spent,0)
+    setTotalBg({limit:limit,spent:spent})
+    console.log(totalBg)
   }
   useEffect(()=>{
     getTranRd();
     getCat();
     getBugetRd();
+    
     
 
   },[])
@@ -55,6 +66,9 @@ function Budget() {
     console.log(frm)
 
   },[frm])
+  useEffect(()=>{
+    total()
+  },[Bud])
   //edit
   async function edit(e,id){
     e.preventDefault()
@@ -126,8 +140,12 @@ function disBg(){
               <div><p style={{color:"rgb(78, 78, 80)"}}>Limit: <span style={{color:"rgb(68, 199, 74)"}}>{i.limit}₹</span></p></div>
               <div><p style={{color:"rgb(43, 43, 45)"}}>Spent: <span style={{color:"rgb(31, 152, 4)"}}>{i.spent}₹</span></p></div>
               <div><p style={{color:"rgb(43, 43, 45)"}}>Remaining: <span style={{color:"rgb(4, 125, 22)"}}>{i.limit-i.spent}₹</span></p></div>
-              <div style={{marginLeft:"56%"}}>{i.limit}₹</div>
-              <div><progress max={i.limit} value={i.spent} style={{ width: "300px",height: "30px",accentColor: (i.limit-i.spent)>0?"rgb(64, 61, 248)":"rgb(240, 27, 4)"}}></progress></div>
+              <div style={{float:"right"}} className='price-box'>{i.limit}₹
+              <div className='triangle'></div>
+              </div>
+              
+              <div><progress max={i.limit} value={i.spent} style={{ width: "300px",height: "30px",accentColor: (i.limit-i.spent)>0?"rgb(64, 61, 248)":"rgb(240, 27, 4)",marginBottom:"0px"}}></progress></div>
+              <div style={{float:"right",paddingBottom:10,color:'red',paddingRight:0,display:(i.limit-i.spent)>0?"none":"block"}}>*Limit Exceeded</div>
             </div>
             <div className='dot'>
               <div><Dot style={{color:"blue",marginTop:20}}/></div>
@@ -195,19 +213,17 @@ function disBg(){
 
         {/* date */}
         <div className='header2'>
-          <div className='h'>
-            <div><span id='gt' style={{ fontSize: 30 }}>&lt;</span> </div>
-            <div  id='date'style={{ fontSize: 20}}>Mar 24,2025</div>
-            <div><span  id='lt' style={{ fontSize: 30}}>&gt;</span> </div>
+          <div >
+             <Dateft/>
           </div>
           <div className=' h3' style={{lineHeight:"20px"}}>
-            <div><span id='r1'>TOTAL BUDGET</span> </div>
-            <div ><span  id='r2'>TOTAL SPENT</span></div>
+            <div><span className='br1'>TOTAL BUDGET</span> </div>
+            <div ><span  className='br2'>TOTAL SPENT</span></div>
             
           </div>
           <div className='h3 h4' style={{lineHeight:"30px"}}>
-            <div><span  id='r1'style={{ color:" rgb(15, 161, 71)"}}><span>0.00</span>$</span></div>
-            <div><span id='r2' style={{ color:" rgb(247, 5, 5)"}}><span>0.00</span>$</span></div>
+            <div><span  className='br1'style={{ color:" rgb(15, 161, 71)"}}><span>0.00</span>$</span></div>
+            <div><span className='br2' style={{ color:" rgb(247, 5, 5)"}}><span>0.00</span>$</span></div>
             
           </div>
 
@@ -215,24 +231,32 @@ function disBg(){
         </div>
         <div className='bottom' >
           <div className='bt'  id="icon" >
+          <a href="http://localhost:3000/rd">
             <FactCheckOutlinedIcon     style={{fontSize:"30px"}} />
             <p>Records</p>
+            </a>
           </div>
           <div  className='bt'>
+          <a href="http://localhost:3000/analysis">
             <DataUsageOutlined   style={{fontSize:"30px"}} />
-            <p>Data</p>
+            <p>Analysis</p>
+            </a>
           </div>
           <div className='bt' style={{color:"blue"}}>
             <MoneyBagOutlined   style={{fontSize:"30px"}} />
             <p>Budget</p>
           </div>
           <div  className='bt' >
+          <a href="http://localhost:3000/amount">
             <AccountBalanceWalletOutlinedIcon   style={{fontSize:"30px"}}  />
-            <p>Wallet</p>
+            <p>Account</p>
+            </a>
           </div>
           <div style={{float:"left"}} className='bt' >
+          <a href="http://localhost:3000/categories">
                 <CategoryOutlinedIcon   style={{fontSize:"30px"}} />
                 <p>Categories</p>
+                </a>
             </div>
           
         </div>

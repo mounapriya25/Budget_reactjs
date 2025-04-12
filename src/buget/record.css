@@ -8,7 +8,7 @@ body{
     width: 100%;
     display: grid;
     grid-template-columns: 690px 760px 10px ;
-    color: rgb(234, 242, 238);
+    color: white;
     background-color: rgb(6, 54, 246);
 }
 .header2{
@@ -26,8 +26,8 @@ body{
     font-weight: bold;
     grid-template-columns: 720px 170px 100px ;
 }
-.incomeh{
-    margin-top: 15%;
+.incmh{
+    margin-top: 5px;
     
     margin-bottom: 0%;
     font-weight: bold;
@@ -35,7 +35,7 @@ body{
    
     
 }
-.incomename{
+.incmname{
     display: flex;
     justify-content: space-around;
     flex:1;

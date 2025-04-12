@@ -22,6 +22,9 @@ function Setpass(){
 
     const resp=await axios.post("http://localhost:8000/setpass",pass, { withCredentials: true })
     if(resp.data){
+      localStorage.setItem("userEmail",resp.data.us.email)
+      const u=localStorage.getItem("userEmail")
+            console.log(u);
       navigate("/home")
     }
   }

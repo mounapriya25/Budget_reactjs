@@ -7,7 +7,7 @@ import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import axios from 'axios';
 function Add() {
-    const em = "mounaprikanikireddygari@gmail.com" ;
+    
     const[operation ,setOperation]=useState("")
     const [frm,setFrm]=useState({})
     const [cat,setCat]=useState([])//categories fetch from mg
@@ -16,13 +16,13 @@ function Add() {
     const nav=useNavigate()
     const location=useLocation()
     console.log(location.state)
-    
-
-    
+   
 //get cat and account
     const getDet=async()=>{
         try{
-            const res=await axios.post("http://localhost:8000/getcatAcc",{em})
+            const email=frm.email
+            console.log(frm.email,'uuuuuuuuuuuuuuu')
+            const res=await axios.post("http://localhost:8000/getcatAcc",{email})
             console.log(res.data)
             setCat(res.data.cat)
             setAct(res.data.acc)
@@ -33,14 +33,24 @@ function Add() {
     useEffect(()=>{
         setFrm(location.state.frm);
         setOperation(location.state.operation)
-        getDet();
+        
     },[])
 
     useEffect(() => {
         
         console.log("Form changed:", frm)
+       
+        
 
     }, [frm])
+    
+    useEffect(() => {
+        if(frm.email){
+            getDet();
+        } 
+
+    }, [frm.email])
+    
     
     //When you use curly braces {}, you're telling JavaScript you're writing a code block.
     //In that case, you must use return to return a value.
@@ -57,7 +67,7 @@ function Add() {
         ))
     }
     function getAct1(){
-         return act.filter((i)=>i.icon!=frm.accId2).map((i)=>(
+         return act.filter((i)=>i._id!=frm.accId2).map((i)=>(
                 <div>
                     <div style={{borderRadius:"10px",padding:"20px 10px 10px 10px",backgroundColor:i._id===frm.accId1? "rgb(179, 206, 241)" : "white",lineHeight:"10px",marginBottom:30}}>
                         <img src={i.icon} alt={i.name} width={55} style={{borderRadius:"30px"}}  onClick={(e)=> { e.preventDefault(); setFrm({...frm,["accId1"]:i._id})}}/>
@@ -68,7 +78,7 @@ function Add() {
     }
     function getAct2(){
        
-         return act.filter((i)=>i.icon!=frm.accId1).map((i)=>(
+         return act.filter((i)=>i._id!=frm.accId1).map((i)=>(
                 <div>
                     <div style={{borderRadius:"10px",padding:"20px 10px 10px 10px",backgroundColor:i._id===frm.accId2? "rgb(179, 206, 241)" : "white",lineHeight:"10px",marginBottom:30}}>
                         <img src={i.icon} alt={i.name} width={55} style={{borderRadius:"30px"}}  onClick={(e)=> { e.preventDefault();setFrm({...frm,["accId2"]:i._id})}}/>
@@ -125,10 +135,10 @@ function Add() {
     const frmsub=async(e)=>{
         e.preventDefault()
         console.log(frm)
-        if(!frm.catId && frm.type!=="transfer"){
+        if(!frm.catId && frm.type!=="Transfer"){
             alert("Please select Category");
         }
-        else if(!frm.accId1 ||(!frm.accId2 && frm.type==="transfer")){
+        else if(!frm.accId1 ||(!frm.accId2 && frm.type==="Transfer")){
             alert("Please select Account");
         }
         else{
