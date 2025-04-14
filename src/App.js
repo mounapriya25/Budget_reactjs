@@ -14,11 +14,13 @@ import Add from './buget/Add';
 import Amount from './buget/amount';
 import Rd from './buget/rd';
 import Date from './buget/Dateft'
+import Side from './buget/side';
+import Profile from './buget/Profile';
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 
 
 function App() {
-  //localStorage.setItem("usem"," ");
+  
   return (
     <div>
       <Router>
@@ -37,6 +39,8 @@ function App() {
           <Route path="/amount" element={<Amount/>}></Route>
           <Route path="/rd" element={<Rd/>}></Route>
           <Route path="/d" element={<Date/>}></Route>
+          <Route path="/s" element={<Side/>}></Route>
+          <Route path="/settings" element={<Profile/>}></Route>
 
 
         </Routes>

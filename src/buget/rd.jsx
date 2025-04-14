@@ -15,10 +15,34 @@ import Arrow from '@mui/icons-material/ArrowForwardOutlined';
 import axios from "axios"
 import dayjs from "dayjs"
 import  Dateft from './Dateft.jsx'
+import Side from './side.jsx'
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
+
+
 function Rd() {
+
+  dayjs.extend(isSameOrAfter )
+  dayjs.extend(isSameOrBefore )
+
+
+  const [currentDt,setcurrentDt]=useState(dayjs())
+  
+  
   const em=localStorage.getItem("userEmail")
   console.log(em,"in rd ");
+
+  const currency=localStorage.getItem("currency")
+  console.log(currency,"in rd ");
+
+  const [startD, setstartD]=useState(dayjs())
+  const mode=localStorage.getItem("mode")
+  //const mode="weekly"
+  console.log(mode,"in rd ");
+
   const [record,setRecord]=useState([])
+  const [totalrecords,setTotalrecords]=useState([])
+  const [subrecords,setsubrecords]=useState([])
   const nav=useNavigate()
   const [visibleId, setVisibleId] = useState(null);
   const [totalAm, setTotalAm] = useState({
@@ -27,40 +51,139 @@ function Rd() {
   });
   
   
-  
+  const [dis, setDis] = useState("none");
   
   //get records
   const getRecord=async()=>{
     try{
       const res=await axios.post("http://localhost:8000/getRd",{em})
       console.log(res.data.rd)
-      setRecord(res.data.rd)
+      setTotalrecords(res.data.rd)
     }catch(err){
       console.log(err)
 
     }
   }
+
+  //get settings
+  const getSettings=async()=>{
+    try{
+      const res=await axios.post("http://localhost:8000/getSettings",{em})
+      console.log(res.data.st)
+      localStorage.setItem("theme",res.data.st.theme)
+      localStorage.setItem("mode",res.data.st.mode)
+      localStorage.setItem("currency",res.data.st.currency)
+      
+    }catch(err){
+      console.log(err)
+
+    }
+  }
+  //filter records by date
   const getDate=(date)=>{
-    const dt=dayjs(date).format("YYYY-M-DD")
-    console.log(dt,dayjs().format("YYYY-M-DD"),'kpkkkk')
-    return dt;
+      const dt=dayjs(date)
+      return dt; 
+    
     
   }
+
+
   const getRecordBydate=()=>{
-    const res=record.filter((i)=>getDate(i.date)===getDate(dayjs()))
-    console.log(res,'kkkkk')
-   // getDate(dayjs("2025-04-12T00:00:00.000Z"))
+    console.log(dayjs(currentDt),"ccccc")
+    let res;
+    if(mode==="daily"){
+     
+       res=totalrecords.filter((i)=>getDate(i.date).isSame(currentDt,'day'))
+      console.log(res)
+      setRecord(res)
+    }
+    else if(mode==="monthly"){
+      const start=currentDt.startOf('month')
+      const end=currentDt.endOf('month')
+      setstartD(start)
+
+       res=totalrecords.filter((i)=>getDate(i.date).isSameOrAfter(start,'day')&&getDate(i.date).isSameOrBefore(end,'day'))
+      console.log(res)
+      setsubrecords(res)
+    }
+    else {
+      const start=currentDt.startOf('week').add(1,'day')
+      const end=currentDt.endOf('week').add(1,'day')
+      setstartD(start)
+
+       res=totalrecords.filter((i)=>getDate(i.date).isSameOrAfter(start,'day')&&getDate(i.date).isSameOrBefore(end,'day'))
+      console.log(res)
+      setsubrecords(res)
+    }
+   
+    
+  }
+
+  //display records based on date and mode
+  function DateRd(){
+    if(mode==="weekly"){
+      let start=startD
+      const end=start.add(7,'day')
+      const rd=[];
+      while(start.isSameOrBefore(end,"day")){
+        const res=subrecords.filter((i)=>getDate(i.date).isSame(start,'day'))
+        if(res.length>0){
+          rd.push({date:start,rds:res})
+        }
+        start=start.add(1,'day')
+      }
+      return rd.map((i) => (
+        <div key={i.date}>
+          <h3>{formatDt(i.date)}</h3>
+          <hr style={{ color: 'green', marginBottom: 0 }} />
+          <div>{disRd(i.rds)}</div>
+        </div>
+       ));
+    }
+    
+    else if(mode==="monthly"){
+      let start=startD
+      const end=start.endOf('month')
+      const rd=[];
+      while(start.isSameOrBefore(end,"day")){
+        const res=subrecords.filter((i)=>getDate(i.date).isSame(start,'day'))
+        if(res.length>0){
+          rd.push({date:start,rds:res})
+        }
+        start=start.add(1,'day')
+      }
+      return rd.map((i) => (
+        <div key={i.date}>
+          <h3>{formatDt(i.date)}</h3>
+          <hr style={{ color: 'green', marginBottom: 0 }} />
+          <div>{disRd(i.rds)}</div>
+        </div>
+       ));
+    }
+    else {
+      return(
+        <div>
+          <h3>{formatDt(currentDt)}</h3>
+        <hr style={{ color: 'green', marginBottom: 0 }} />
+
+        <div>{disRd(record)}</div></div>)
+    }
     
   }
   useEffect(()=>{
     getRecord()
+    getSettings()
 
   },[])
   useEffect(()=>{
-    
     total()
-    getRecordBydate()
-  },[record])
+  },[record,subrecords])
+
+  useEffect(()=>{
+   getRecordBydate()
+  },[currentDt,totalrecords])
+
+  
   function cancle(e,n){
     e.preventDefault()
     setVisibleId(null)
@@ -68,12 +191,20 @@ function Rd() {
   }
   //total Expenses
   function total(){
-    const exp=record.filter((i)=>i.typename==="Expense").reduce((sum,i)=>sum+i.amount,0)
-    const inc=record.filter((i)=>i.typename==="Income").reduce((sum,i)=>sum+i.amount,0)
-    localStorage.setItem("Income",inc)
-    localStorage.setItem("Expense",exp)
-    setTotalAm({income:inc,expense:exp})
-    console.log(inc," exp:",exp,totalAm)
+    if(mode==="daily"){
+      const exp=record.filter((i)=>i.typename==="Expense").reduce((sum,i)=>sum+i.amount,0)
+      const inc=record.filter((i)=>i.typename==="Income").reduce((sum,i)=>sum+i.amount,0)
+      setTotalAm({income:inc,expense:exp})
+      console.log(inc," exp:",exp,totalAm)
+    }
+    else{
+      console.log("dddddddddddddd")
+      const exp=subrecords.filter((i)=>i.typename==="Expense").reduce((sum,i)=>sum+i.amount,0)
+      const inc=subrecords.filter((i)=>i.typename==="Income").reduce((sum,i)=>sum+i.amount,0)
+      setTotalAm({income:inc,expense:exp})
+      console.log(inc," exp:",exp,totalAm)
+    }
+    
     
   }
 
@@ -101,7 +232,7 @@ function Rd() {
         email:em,
         id:rd._id,
         type:rd.typename,
-        catId:rd.category._id,
+        catId:rd.category?rd.category._id:null,
         accId1:rd.account1._id,
         accId2:rd.account2?rd.account2._id:null,
         note:rd.note,
@@ -111,6 +242,7 @@ function Rd() {
     }
     console.log(id,rd._id,frm)
    const operation="Update"
+  
     nav("/add",{state:{frm,operation}})
   
   }
@@ -133,15 +265,20 @@ function Rd() {
   }
   async function delt(e,id){
     e.preventDefault()
+    const undoAm1 =await axios.put("http://localhost:8000/putAmInEdit",{id})
     const rp= await axios.delete("http://localhost:8000/deleteRd",{data:{id}})
+     
     getRecord()
   }
-
+  const ClickDis= (e) => {
+    e.preventDefault()
+    setDis("display");
+  };
 //transfer
   const disTran=(id)=>{
     const rd=record.find((i)=>i._id===id)
     console.log(id,rd,"heiiii")
-    if(rd.account2!=null){
+    /*if(rd.account2!=null && rd.typename==="Transfer"){
       console.log(rd,"hiiiii")
       return(
         
@@ -155,7 +292,7 @@ function Rd() {
             
        
       )
-    }
+    }*/
   }
   const formatDt=(date)=>{
     return dayjs(date).format('MMMM DD,dddd')
@@ -163,7 +300,7 @@ function Rd() {
   const dispTRanRd=(id)=>{
     const rd=record.find((i)=>i._id===id)
     console.log(id,rd,"heiiii")
-    if(rd.account2!=null){
+    if(rd.account2!=null ){
       console.log(rd,"hiiiii")
       return(
         
@@ -198,7 +335,7 @@ function Rd() {
           
         </div>
           <p style={{color:"white",paddingTop:80}}>{i.typename}</p>
-          <p style={{color:"white",fontSize:30,lineHeight:0}}>{i.amount}₹</p>
+          <p style={{color:"white",fontSize:30,lineHeight:0}}>{i.amount}{currency}</p>
           <div style={{float:"right",marginRight:20}}>{disdate(i.date)}</div>
       </div>
       <div className='data2'>
@@ -214,8 +351,8 @@ function Rd() {
     ))
   }
   //display records
-  function disRd(){
-    return record.map((i)=>(
+  function disRd(DateRds){
+    return DateRds.map((i)=>(
         <div className='trd'>
           <div className="labs" onClick={(e)=>{e.preventDefault(); setVisibleId(i._id)}}>
             <div className="labels">
@@ -235,7 +372,7 @@ function Rd() {
               
             </div>
             <div style={{ float: 'right', color: 'red', margin: '15px 18px',fontWeight:"bold" }} className="amt">
-              {i.amount}₹
+              {i.amount}{currency}
             </div>
  
           </div> 
@@ -250,7 +387,7 @@ function Rd() {
       {/* Header - Money Tracker */}
       <div className="header">
         <div>
-          <Menu style={{ fontSize: 30, color: 'white', margin: '10px 20px' }} />
+          <Menu style={{ fontSize: 30, color: 'white', margin: '10px 20px' }} onClick={ClickDis}/>
         </div>
         <div style={{ fontSize: 28, fontWeight: 700, paddingTop: 10, paddingBottom: 25 }}>
           MoneyTrack
@@ -263,21 +400,7 @@ function Rd() {
       {/* Date Section */}
       <div className="header2">
         <div >
-          {/*
-          <div>
-            <button id="gt" style={{ fontSize: 30 }}>
-              &lt;
-            </button>
-          </div>
-          <div id="date" style={{ fontSize: 20 }}>
-           {headdate()}
-          </div>
-          <div>
-            <button id="lt" style={{ fontSize: 30 }}>
-              &gt;
-            </button>
-          </div>*/}
-          <Dateft/>
+          <Dateft currentDt={currentDt} setcurrentDt={setcurrentDt}/>
          
         </div>
        
@@ -289,9 +412,9 @@ function Rd() {
           <div>BALANCE</div>
         </div>
         <div className='incomename'>
-          <span style={{ color: 'rgb(247, 5, 5)' }}  >{totalAm.expense}₹</span>
-          <span style={{ color: 'rgb(15, 161, 71)' }}>{totalAm.income}₹</span>
-          <span style={{ color: 'rgb(247, 5, 5)' }}>{totalAm.income-totalAm.expense}₹</span>
+          <span style={{ color: 'rgb(247, 5, 5)' }}  >{totalAm.expense}{currency}</span>
+          <span style={{ color: 'rgb(15, 161, 71)' }}>{totalAm.income}{currency}</span>
+          <span style={{ color: 'rgb(247, 5, 5)' }}>{totalAm.income-totalAm.expense}{currency}</span>
         </div>
         </div>
         </div> 
@@ -332,13 +455,18 @@ function Rd() {
         </div>
       </div>
       
+      <Side dis={dis} setDis={setDis} className={`sidebar ${dis === "display" ? "display" : ""}`} />
+
+        
 
       {/* Body */}
       <div className="body">
-        <h3>{formatDt(Date.now())}</h3>
+       {/*} <h3>{formatDt(Date.now())}</h3>
         <hr style={{ color: 'green', marginBottom: 0 }} />
 
-        <div>{disRd()}</div>
+        <div>{disRd()}</div>*/}
+        <div>{DateRd()}</div>
+        
         <div>
         <button className="addbt" onClick={addRd}>Add New Record</button>
       </div>

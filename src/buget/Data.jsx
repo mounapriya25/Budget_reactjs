@@ -12,37 +12,119 @@ import axios from "axios";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Label } from "recharts";
 import dayjs from 'dayjs';
 import  Dateft from './Dateft.jsx'
+import Side from './side.jsx'
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 
 function Analysis() {
+
+  dayjs.extend(isSameOrAfter )
+  dayjs.extend(isSameOrBefore )
+
   const [data, setData] = useState([]);
+  const [totaldata, setTotaldata] = useState([]);
+  const [RdData, setRdData] = useState([]);
   const [total, settotal]=useState(0);
-  const email=localStorage.getItem("userEmail")
-  console.log(email,"in home ");
-  const income=localStorage.getItem("Income")
-  const expense=localStorage.getItem("Expense")
-  
+
+  const em=localStorage.getItem("userEmail")
+  console.log(em,"in home ");
+
+  const currency=localStorage.getItem("currency")
+  console.log(currency,"in rd ");
+
+  const mode=localStorage.getItem("mode")
+  const [startD, setstartD]=useState(dayjs())
+
+  const [dis, setDis] = useState("none");
+  const ClickDis= () => {
+    setDis("display");
+  };
+
+
+  const [currentDt,setcurrentDt]=useState(dayjs())
+  const [totalExp, setTotalExp] = useState({
+      income:0,
+      expense:0
+    });
+    
 
   // Fetch expenses from the backend API
   const fetchExpenses = async () => {
     try {
-      console.log(email)
-      const response = await axios.post("http://localhost:8000/expensesOverveiw",{email});
-      setData(response.data.rdE); // Set expenses data from MongoDB
+      console.log(em)
+      const res=await axios.post("http://localhost:8000/getRd",{em})
+      console.log(res.data.rd)
+      setTotaldata(res.data.rd); 
     } catch (error) {
       console.error("Error fetching expenses:", error);
     }
   };
- 
+  //filter data by date
+ const getDate=(date)=>{
+     const dt=dayjs(date)
+     return dt;
+     
+   }
+   const getRecordBydate=()=>{
+
+     console.log(dayjs(currentDt),"ccccc")
+     let res
+        if(mode==="daily"){
+          
+            res=totaldata.filter((i)=>getDate(i.date).isSame(currentDt,'day'))
+           console.log(res)
+           setRdData(res)
+           
+         }
+         else if(mode==="monthly"){
+           const start=currentDt.startOf('month')
+           const end=currentDt.endOf('month')
+           setstartD(start)
+     
+            res=totaldata.filter((i)=>getDate(i.date).isSameOrAfter(start,'day')&&getDate(i.date).isSameOrBefore(end,'day'))
+           console.log(res)
+           setRdData(res)
+         }
+         else {
+           const start=currentDt.startOf('week').add(1,'day')
+           const end=currentDt.endOf('week').add(1,'day')
+           setstartD(start)
+     
+           res=totaldata.filter((i)=>getDate(i.date).isSameOrAfter(start,'day')&&getDate(i.date).isSameOrBefore(end,'day'))
+           console.log(res)
+           setRdData(res)
+         }
+        
+          const exp=RdData.filter((i)=>i.typename==="Expense")
+          setData(exp)
+         
+   }
+
+   //total expenses
+   function totalexpCal(){
+    const exp=RdData.filter((i)=>i.typename==="Expense").reduce((sum,i)=>sum+i.amount,0)
+    const inc=RdData.filter((i)=>i.typename==="Income").reduce((sum,i)=>sum+i.amount,0)
+    setTotalExp({income:inc,expense:exp})
+    console.log(inc," exp:",exp,totalExp)
+    
+  }
   useEffect(() => {
     fetchExpenses();
   }, []);
   useEffect(() => {
-    totalam();// we are using it in another use Effect because react immediately update date ,so if i do like it updates amount when data changes
+    totalam();
+    totalexpCal();
+    getRecordBydate()// we are using it in another use Effect because react immediately update date ,so if i do like it updates amount when data changes
     /*if (data.length > 0) {
       totalam();
     }*/
   }, [data]);//[] it run this effect only once not when data changes
   
+  useEffect(()=>{
+    getRecordBydate()
+  },[currentDt])
+
+  //total amount
   const totalam=()=>{
     const t = data.reduce((sum, item) => sum + item.amount, 0);
   settotal(t);
@@ -55,7 +137,7 @@ function Analysis() {
   function RenderPieChart(){
 
     const customLabel = ({payload }) => {
-      return `${payload.category.name}: ₹${payload.amount}`
+      return `${payload.category.name}: ${currency}${payload.amount}`
     
     };
       return (
@@ -110,12 +192,12 @@ function rnBar(){
       <div className='pgbar' >
         <div>
           <div style={{float:"left",fontWeight:"bold",fontSize:"20px"}}>{i.category.name}</div>
-          <div style={{float:"right",marginRight:"230px",color:"red"}}>-{i.amount}₹</div>
+          <div style={{float:"right",marginRight:"230px",fontWeight:"bold",color:"red"}}>-{i.amount}{currency}</div>
         </div>
         <div><progress max={total} value={i.amount} style={{ width: "300px",height: "30px",accentColor: "rgb(42, 133, 224)"}}></progress></div>
         
       </div>
-      <div><p>{((i.amount / total) * 100).toFixed(2)}%</p></div>
+      <div style={{fontWeight:"bold",color:"forestgreen"}}><p>{((i.amount / total) * 100).toFixed(2)}%</p></div>
     </div>
     
   ))
@@ -126,7 +208,7 @@ function rnBar(){
 
       {/* header - money tracker*/}
         <div className='header'>
-            <div><Menu style={{ fontSize: 30, color: "white",margin:" 10px 20px"}}/></div>
+            <div><Menu style={{ fontSize: 30, color: "white",margin:" 10px 20px"}} onClick={ClickDis}/></div>
             <div style={{ fontSize: 28 ,fontWeight:700, paddingTop:10,paddingBottom:25}}>MoneyTrack</div>
             <div><SearchOutlinedIcon style={{ fontSize: 30, color: "white" ,margin:" 10px 20px"}} /></div>
         </div>
@@ -137,7 +219,7 @@ function rnBar(){
             <div><span id='gt' style={{ fontSize: 30 }}>&lt;</span> </div>
             <div  id='date'style={{ fontSize: 20}}>{ftHeadDate()}</div>
             <div><span  id='lt' style={{ fontSize: 30}}>&gt;</span> </div>*/}
-            <Dateft/>
+            <Dateft currentDt={currentDt} setcurrentDt={setcurrentDt}/>
           </div>
           <div className='incmh'>
         <div className='incmname'>
@@ -146,9 +228,9 @@ function rnBar(){
           <div>BALANCE</div>
         </div>
         <div className='incmname'>
-          <span style={{ color: 'rgb(247, 5, 5)' }}  >{expense?expense:"0"}₹</span>
-          <span style={{ color: 'rgb(15, 161, 71)' }}>{income?income:"0"}₹</span>
-          <span style={{ color: 'rgb(247, 5, 5)' }}>{income-expense?income-expense:"0"}₹</span>
+          <span style={{ color: 'rgb(247, 5, 5)' }}  >{totalExp.expense?totalExp.expense:"0"}{currency}</span>
+          <span style={{ color: 'rgb(15, 161, 71)' }}>{totalExp.income?totalExp.income:"0"}{currency}</span>
+          <span style={{ color: 'rgb(247, 5, 5)' }}>{totalExp.income-totalExp.expense?totalExp.income-totalExp.expense:"0"}{currency}</span>
         </div>
         </div>
        
@@ -186,6 +268,7 @@ function rnBar(){
             </div>
         
         </div>
+        <Side dis={dis} setDis={setDis} style={{display:(dis!="none")?"block":"none"}}/>
         <div ><button className='add' style={{backgroundColor:'white',color:"blue"}}>+</button></div>
 
 

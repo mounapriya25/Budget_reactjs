@@ -11,11 +11,19 @@ import MoneyBagOutlined from "@mui/icons-material/MonetizationOnOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import Dot from "@mui/icons-material/MoreHoriz";
 import axios from "axios";
-
+import Side from './side.jsx'
  
 function Category() {
   const em=localStorage.getItem("userEmail")
   console.log(em,"in category ");
+
+  const currency=localStorage.getItem("currency")
+  console.log(currency,"in rd ");
+  const [dis, setDis] = useState("none");
+  const ClickDis= () => {
+    setDis("display");
+  };
+
   const nav=useNavigate()
   const [uscat, setUscat] = useState([]);
   const[operation,setOperation]=useState("Add");
@@ -161,7 +169,7 @@ function eidt(e,id,name,type,icon){
       <div  id="bd">
       {/* Header */}
       <div className='header'>
-        <Menu style={{ fontSize: 30, color: "white", margin: "10px 20px" }} />
+        <Menu style={{ fontSize: 30, color: "white", margin: "10px 20px" }} onClick={ClickDis}/>
         <div style={{ fontSize: 28, fontWeight: 900, paddingTop: 10, paddingBottom: 15 }}>MoneyTrack</div>
         <SearchOutlinedIcon style={{ fontSize: 30, color: "white", margin: "10px 20px" }} />
       </div>
@@ -174,9 +182,9 @@ function eidt(e,id,name,type,icon){
             <div ><span  className='r2'>TOTAL AMOUNT</span></div>
           </div>
           <div className='ch3 h4' style={{lineHeight:"38px"}}>
-            <div><span  className='r1'style={{ color:" rgb(15, 161, 71)"}}><span>{expense?expense:"0"}</span>₹</span></div>
-            <div><span className='r2' style={{ color:" rgb(247, 5, 5)"}}><span>{income?income:"0"}</span>₹</span></div>
-            <div><span  className='r2'style={{ color:" rgb(15, 161, 71)"}}><span>{amount?amount:"0"}</span>₹</span></div>
+            <div><span  className='r1'style={{ color:" rgb(15, 161, 71)"}}><span>{expense?expense:"0"}</span>{currency}</span></div>
+            <div><span className='r2' style={{ color:" rgb(247, 5, 5)"}}><span>{income?income:"0"}</span>{currency}</span></div>
+            <div><span  className='r2'style={{ color:" rgb(15, 161, 71)"}}><span>{amount?amount:"0"}</span>{currency}</span></div>
           </div>
       </div>
 
@@ -203,7 +211,7 @@ function eidt(e,id,name,type,icon){
           </a></div>
         <div  style={{ float: "left", color: "blue",lineHeight:"0px" }}><CategoryOutlinedIcon style={{ fontSize: "30px"}}/><p>Categories</p></div>
       </div>
-
+<Side dis={dis} setDis={setDis} style={{display:(dis!="none")?"block":"none"}}/>
       {/* Income Categories */}
       <div className='body1'style={{marginTop:"180px"}}>
         <h3 style={{ color: "rgb(61, 61, 62)", textAlign: "center" }}>INCOME CATEGORIES</h3>

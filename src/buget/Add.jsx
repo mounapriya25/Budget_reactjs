@@ -16,12 +16,14 @@ function Add() {
     const nav=useNavigate()
     const location=useLocation()
     console.log(location.state)
+
+    
    
 //get cat and account
     const getDet=async()=>{
         try{
             const email=frm.email
-            console.log(frm.email,'uuuuuuuuuuuuuuu')
+            console.log(frm.email)
             const res=await axios.post("http://localhost:8000/getcatAcc",{email})
             console.log(res.data)
             setCat(res.data.cat)
@@ -33,15 +35,14 @@ function Add() {
     useEffect(()=>{
         setFrm(location.state.frm);
         setOperation(location.state.operation)
+        if((!frm.catId || operation!="Add" )&& frm.type==="Transfer" ){
+            setAcc2("Account")
+        }
         
     },[])
 
     useEffect(() => {
-        
         console.log("Form changed:", frm)
-       
-        
-
     }, [frm])
     
     useEffect(() => {
@@ -144,9 +145,14 @@ function Add() {
         else{
             if(operation==="Add"){
             const fres=await axios.post("http://localhost:8000/addRd",frm)
+            const upAm =await axios.put("http://localhost:8000/putAmInAdd",frm)
+           
             }else{
+                const undoAm1 =await axios.put("http://localhost:8000/putAmInEdit",frm)
                 const fres =await axios.put("http://localhost:8000/updateRd",frm)
+                const upAm =await axios.put("http://localhost:8000/putAmInAdd",frm)
             }
+           // 
             nav("/rd")
         }
         

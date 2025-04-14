@@ -39,7 +39,9 @@
 }
 
 .radio-container input[type="radio"] {
-   
+    width: 15px;
+    height: 15px;
+    accent-color: blue;
     margin: 5px 5px 0px 0px;   /* Control space between the button and label text */
 }
 

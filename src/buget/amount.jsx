@@ -9,10 +9,20 @@ import MoneyBagOutlined from "@mui/icons-material/MonetizationOnOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import axios from "axios";
 import Dot from "@mui/icons-material/MoreHoriz";
+import Side from './side.jsx'
 function Amount() {
    
     const em=localStorage.getItem("userEmail")
     console.log(em,"in category ");
+
+    const currency=localStorage.getItem("currency")
+    console.log(currency,"in rd ");
+    const [dis, setDis] = useState("none");
+    const ClickDis= () => {
+      setDis("display");
+    };
+
+
     const [fm,setfm]=useState({
       email:em,
       id:"",
@@ -25,9 +35,11 @@ function Amount() {
     const [totalAmount ,setTotalAmount]=useState(0)
     const income=localStorage.getItem("Income")
   const expense=localStorage.getItem("Expense")
+  const [tran, setTran]=useState([])
 
   useEffect(()=>{
     getAm()
+    getTranRd()
   },[])
   useEffect(()=>{
    totalAm()
@@ -55,7 +67,13 @@ function Amount() {
      console.log(totalAmount)
      localStorage.setItem("amount",am)
   }
+  async function getTranRd(){
+    const res = await axios.post("http://localhost:8000/getTranBg",{em});
+    console.log(res.data.tn)
+    setTran(res.data.tn)
+  }
 
+  
   const  disacc=()=>{
     console.log(acc,"body")
     return acc.map((i)=>(
@@ -64,7 +82,7 @@ function Amount() {
       <div style={{position:'relative',bottom:"10px"}} ><img src={i.icon} alt={i.name} width={50} style={{borderRadius:"30px"}}  /></div> 
       <div className='dt' style={{marginBottom:20}}>
         <h3 style={{textAlign:"left"}}>{i.name}</h3>
-        <p>Balance : <span>{i.amount}</span><span>₹</span></p>
+        <p>Balance : <span>{i.amount}</span><span>{currency}</span></p>
       </div>
        <div className='dot'><div><Dot style={{ fontSize: 30, color: "rgb(5, 5, 251)" }} /></div>
         <div className='dropdn'>
@@ -131,7 +149,7 @@ function Amount() {
 
       {/* header - money tracker*/}
         <div className='header'>
-            <div><Menu style={{ fontSize: 30, color: "white",margin:" 10px 20px"}}/></div>
+            <div><Menu style={{ fontSize: 30, color: "white",margin:" 10px 20px"}} onClick={ClickDis}/></div>
             <div style={{ fontSize: 28 ,fontWeight:900, paddingTop:10,paddingBottom:15}}>MoneyTrack</div>
             <div><SearchOutlinedIcon style={{ fontSize: 30, color: "white" ,margin:" 10px 20px"}} /></div>
         </div>
@@ -145,9 +163,9 @@ function Amount() {
             <div ><span  className='r2'>TOTAL AMOUNT</span></div>
           </div>
           <div className='ah3 h4' style={{lineHeight:"38px"}}>
-            <div><span  className='r1'style={{ color:" rgb(15, 161, 71)"}}><span>{expense?expense:"0"}</span>₹</span></div>
-            <div><span className='r2' style={{ color:" rgb(247, 5, 5)"}}><span>{income?income:"0"}</span>₹</span></div>
-            <div><span  className='r2'style={{ color:" rgb(15, 161, 71)"}}><span>{totalAmount}</span>₹</span></div>
+            <div><span  className='r1'style={{ color:" rgb(15, 161, 71)"}}><span>{expense?expense:"0"}</span>{currency}</span></div>
+            <div><span className='r2' style={{ color:" rgb(247, 5, 5)"}}><span>{income?income:"0"}</span>{currency}</span></div>
+            <div><span  className='r2'style={{ color:" rgb(15, 161, 71)"}}><span>{totalAmount}</span>{currency}</span></div>
           </div>
 
           {/* bottom icons*/}
@@ -184,9 +202,9 @@ function Amount() {
           
         </div>
 
-
+        <Side dis={dis} setDis={setDis} style={{display:(dis!="none")?"block":"none"}}/>
         {/*body*/}
-         <div className='body'>
+         <div className='body' id='bbody'>
           <h3 style={{color:"rgb(61, 61, 62)",textAlign:"center"}}>ACCOUNTS</h3>
           <div>{disacc()}</div>
           <button id='add' className='button' onClick={add}>Add New Account</button>

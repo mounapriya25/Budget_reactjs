@@ -9,14 +9,31 @@ import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import MoneyBagOutlined from "@mui/icons-material/MonetizationOnOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import Dot from "@mui/icons-material/MoreHoriz";
-import  Dateft from './Dateft.jsx'
+import  {BudgetDateft} from './Dateft.jsx'
+import dayjs from "dayjs"
+import Side from './side.jsx'
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 
 function Budget() {
+  dayjs.extend(isSameOrAfter )
+  dayjs.extend(isSameOrBefore )
+
   const em=localStorage.getItem("userEmail")
   console.log(em,"in category ");
+  
+  const currency=localStorage.getItem("currency")
+  console.log(currency,"in rd ");
+  const [dis, setDis] = useState("none");
+  const ClickDis= () => {
+    setDis("display");
+  };
+
+  
   const [tran, setTran]=useState([])
   const [Cat, setCat]=useState([])
   const [Bud, setBud]=useState([])
+  const [TotalBud, setTotalBud]=useState([])
   const [visb, setvisb]=useState(null)
   const [frm, setFrm]= useState({
         email:em,
@@ -25,7 +42,8 @@ function Budget() {
         spent:0,
         id:null
   })
- 
+  const [currentDt,setcurrentDt]=useState(dayjs())
+
   const [operation ,setOperation]=useState("Set")
   const [totalBg ,setTotalBg]=useState({
     limit:0,
@@ -46,20 +64,34 @@ function Budget() {
   async function getBugetRd(){
     const res = await axios.post("http://localhost:8000/getBudget",{em});
     console.log(res.data.bg)
-    setBud(res.data.bg)
+    setTotalBud(res.data.bg)
   }
+  //filter data by date
+  const getDate=(date)=>{
+       const dt=dayjs(date)
+       return dt;
+       
+     }
+  const getRecordBydate=()=>{
+       console.log(dayjs(currentDt),"ccccc")
+       const start=currentDt.startOf('month')
+       const end=currentDt.endOf('month')
+       const res=TotalBud.filter((i)=>getDate(i.date).isSameOrAfter(start,'day') &&getDate(i.date).isSameOrBefore(end,'day'))
+       setBud(res)
+     }
+  //set total buget and spent for header
   function total(){
     const limit=Bud.reduce((sum,i)=>sum+i.limit,0)
     const spent=Bud.reduce((sum,i)=>sum+i.spent,0)
     setTotalBg({limit:limit,spent:spent})
     console.log(totalBg)
   }
+  
+  
   useEffect(()=>{
     getTranRd();
     getCat();
     getBugetRd();
-    
-    
 
   },[])
   useEffect(()=>{
@@ -68,7 +100,12 @@ function Budget() {
   },[frm])
   useEffect(()=>{
     total()
+    getRecordBydate()
   },[Bud])
+
+  useEffect(()=>{
+    getRecordBydate()
+  },[currentDt])
   //edit
   async function edit(e,id){
     e.preventDefault()
@@ -97,7 +134,7 @@ function Budget() {
    //frm submit
   const setData=(e,id)=>{
     e.preventDefault();
-    const spt =tran.filter((i)=>i.category._id===id).reduce((sum,i)=>sum+i.amount,0);
+    const spt =tran.filter((i)=>(i.category?i.category._id:null)===id).reduce((sum,i)=>sum+i.amount,0);
       console.log(spt);
       setFrm({...frm,category:id,spent: spt})
       console.log(frm,"lllll")
@@ -137,10 +174,10 @@ function disBg(){
             </div>
             <div style={{lineHeight:"10px"}}>
               <div><p style={{fontSize:25,color:"rgb(11, 88, 242)",fontWeight:"bold"}}>{i.category.name}</p></div>
-              <div><p style={{color:"rgb(78, 78, 80)"}}>Limit: <span style={{color:"rgb(68, 199, 74)"}}>{i.limit}₹</span></p></div>
-              <div><p style={{color:"rgb(43, 43, 45)"}}>Spent: <span style={{color:"rgb(31, 152, 4)"}}>{i.spent}₹</span></p></div>
-              <div><p style={{color:"rgb(43, 43, 45)"}}>Remaining: <span style={{color:"rgb(4, 125, 22)"}}>{i.limit-i.spent}₹</span></p></div>
-              <div style={{float:"right"}} className='price-box'>{i.limit}₹
+              <div><p style={{color:"rgb(78, 78, 80)"}}>Limit: <span style={{color:"rgb(68, 199, 74)"}}>{i.limit}{currency}</span></p></div>
+              <div><p style={{color:"rgb(43, 43, 45)"}}>Spent: <span style={{color:"rgb(31, 152, 4)"}}>{i.spent}{currency}</span></p></div>
+              <div><p style={{color:"rgb(43, 43, 45)"}}>Remaining: <span style={{color:"rgb(4, 125, 22)"}}>{i.limit-i.spent}{currency}</span></p></div>
+              <div style={{float:"right"}} className='price-box'>{i.limit}{currency}
               <div className='triangle'></div>
               </div>
               
@@ -206,7 +243,7 @@ function disBg(){
 
       {/* header - money tracker*/}
         <div className='header'>
-            <div><Menu style={{ fontSize: 30, color: "white",margin:" 10px 20px"}}/></div>
+            <div><Menu style={{ fontSize: 30, color: "white",margin:" 10px 20px"}} onClick={ClickDis}/></div>
             <div style={{ fontSize: 28 ,fontWeight:900, paddingTop:10,paddingBottom:15}}>MoneyTrack</div>
             <div><SearchOutlinedIcon style={{ fontSize: 30, color: "white" ,margin:" 10px 20px"}} /></div>
         </div>
@@ -214,7 +251,7 @@ function disBg(){
         {/* date */}
         <div className='header2'>
           <div >
-             <Dateft/>
+             <BudgetDateft currentDt={currentDt} setcurrentDt={setcurrentDt}/>
           </div>
           <div className=' h3' style={{lineHeight:"20px"}}>
             <div><span className='br1'>TOTAL BUDGET</span> </div>
@@ -222,8 +259,8 @@ function disBg(){
             
           </div>
           <div className='h3 h4' style={{lineHeight:"30px"}}>
-            <div><span  className='br1'style={{ color:" rgb(15, 161, 71)"}}><span>0.00</span>$</span></div>
-            <div><span className='br2' style={{ color:" rgb(247, 5, 5)"}}><span>0.00</span>$</span></div>
+            <div><span  className='br1'style={{ color:" rgb(15, 161, 71)"}}><span>{totalBg.limit}</span>{currency}</span></div>
+            <div><span className='br2' style={{ color:" rgb(247, 5, 5)"}}><span>{totalBg.spent}</span>{currency}</span></div>
             
           </div>
 
@@ -260,7 +297,7 @@ function disBg(){
             </div>
           
         </div>
-
+        <Side dis={dis} setDis={setDis} style={{display:(dis!="none")?"block":"none"}}/>
 
         {/*body*/}
         <div className='body' style={{opacity:visb?0.8:1}}>

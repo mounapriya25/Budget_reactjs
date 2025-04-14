@@ -1,0 +1,20 @@
+
+.side{
+    z-index: 5;
+    width: 30%;
+    position: fixed;
+    background-color: white;
+    background-size:cover;
+    height:100vh;
+    position: relative;
+    top: 0;
+    margin: 0%;
+    padding:10px ;
+    left: 0;
+    box-shadow:2px 2px 12px 2px rgb(206, 203, 203) ;
+}
+@media screen and (max-width:925px){
+    .side{
+        width: 45%;
+    }
+}
