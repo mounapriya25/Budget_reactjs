@@ -11,6 +11,7 @@ function Login() {
     });
 
     const nav = useNavigate()
+     const [resp,setResp]=useState("")
 
     function github(e){
         e.preventDefault()
@@ -23,19 +24,25 @@ function Login() {
     async function loginform(event){
         event.preventDefault();
         console.log(form.email,form.password)
-        const resp=await axios.post("http://localhost:8000/loginform",form)
-        if(resp.data.message=="success"){
-            const rp=await axios.post("http://localhost:8000/home",{},{headers:{Authorization:`Bearer ${resp.data.token}`}}) 
+        const res=await axios.post("http://localhost:8000/loginform",form)
+        if(res.data.message=="success"){
+            const rp=await axios.post("http://localhost:8000/home",{},{headers:{Authorization:`Bearer ${res.data.token}`}}) 
             console.log(rp)
+            setResp(rp)
             if(rp.data.message=="successfully login"){
                 localStorage.setItem("userEmail",rp.data.ud.email)
                 const u=localStorage.getItem("userEmail")
                 console.log(u);
                 nav("/home")
+                setForm({
+                    email:" ",
+                    password:" "
+                })
             }
         }
 
     }
+    
     function sform(event){
         event.preventDefault();
         setForm({...form,[event.target.name]:event.target.value});
@@ -49,13 +56,14 @@ function Login() {
                     <input type="Email" id="email" name="email" placeholder=" Enter email address" onChange={sform}/><br/>
                 
                     <label ><span>Password</span>
-                        <span style={{color: "rgb(34, 139, 34)",float: "right", fontSize : "small", marginRight: "60px"}}>Forgot Password?</span>
+                     {/*   <span style={{color: "rgb(34, 139, 34)",float: "right", fontSize : "small", marginRight: "60px"}}>Forgot Password?</span>*/}
                     </label><br/>
                     <input type="password" id="passwrd" name="password" placeholder="Enter your password" required onChange={sform}/><br/>
-                    <button type="submit" className="login-btn">Login</button>
+                    <button type="submit" className="login-buttn">Login</button>
+                    <p style={{color:"red"}}>{resp}</p>
                 </form>  
                     
-                    <p className="switch-theme">Don't have an account? <a href="sigin.html">Sign up</a></p>
+                    <p className="switch-theme">Don't have an account? <a href="/signin" style={{color:"blue"}}>Sign up</a></p>
 
 
 

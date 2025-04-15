@@ -52,20 +52,20 @@ label{
     font-weight: bold;
     
 }
-.login-btn{
+.login-buttn{
     margin-top: 10px;
     padding-top: 4.5px;
     width:270px;
     height: 40px;
     font-weight: bold;
     font-size: medium;
-    background: rgb(34, 139, 34);
+    background: blue;
     border: #bab8b8 ;
     border-radius: 6px;
     color: rgb(250, 251, 252);
 }
 .login-btn:hover{
-    background-color: rgb(4, 114, 52);
+    background-color: rgb(2, 38, 128);
 }
 .switch-theme {
     padding-left: 60px;
@@ -132,3 +132,19 @@ img{
 
     }
 }
+@media screen  and (max-width:600px){
+    .login{
+        margin: 20px 0px;
+        width: 340px;
+        margin-left: 0%;
+    }
+    input,.login-btn{
+        width:85%;
+        margin-left: 0%;
+    }
+    .login-buttn{
+        
+        width:85%;
+        
+    }
+  }

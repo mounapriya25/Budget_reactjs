@@ -11,9 +11,10 @@ body{
     color: white;
     background-color: rgb(6, 54, 246);
 }
-.header2{
+.header2b{
     position: fixed;
     top: 8%;
+    background-color: white;
     width: 100%;
     color: rgb(49, 150, 88);
     background-color: rgb(246, 248, 249);
@@ -277,4 +278,45 @@ body{
         right:30%;
     }
     
+}
+
+@media screen and (max-width:600px){
+    .h3{
+       
+        display: grid;
+        grid-template-columns: 160px 500px;
+        margin-left:50px;
+        background-color: rgb(254, 254, 254);
+    
+    }
+    .h{
+        font-weight: bold;
+        display: grid;
+        
+        grid-template-columns: 330px 150px 100px ;
+    }
+    .header2b{
+        position: fixed;
+        top: 2%;
+        background-color: white;
+    }
+    .br1{
+        margin-left: 0px;
+      }
+      .catB{
+        width:95%;
+        grid-template-columns: 20% 49% 15%;
+        margin-left:10px;
+        overflow: hidden;
+    }
+    .form{
+        z-index: 10;
+        position: fixed;
+        top:15%;
+        left:0%;
+        
+        width:200px;
+        height: 380px;
+        margin-left: 0%;
+    }
 }

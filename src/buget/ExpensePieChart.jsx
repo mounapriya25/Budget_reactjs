@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Label } from "recharts";
 
-const COLORS = ["rgb(6, 198, 241)","rgb(6, 225, 65)","rgba(247, 243, 1, 0.89)","rgba(248, 7, 59, 0.89)",,"rgba(246, 152, 3, 0.94)"]; // Colors for pie segments
-
+const COLORS = ["rgb(6, 198, 241)","rgb(6, 225, 65)","rgba(247, 243, 1, 0.89)","rgba(248, 7, 59, 0.89)",,"rgba(246, 152, 3, 0.94)"]; // Colors for pie segments11
 const PieChartComponent = () => {
   const [data, setData] = useState([]);
 

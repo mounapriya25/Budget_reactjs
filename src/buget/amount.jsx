@@ -151,7 +151,7 @@ function Amount() {
         <div className='header'>
             <div><Menu style={{ fontSize: 30, color: "white",margin:" 10px 20px"}} onClick={ClickDis}/></div>
             <div style={{ fontSize: 28 ,fontWeight:900, paddingTop:10,paddingBottom:15}}>MoneyTrack</div>
-            <div><SearchOutlinedIcon style={{ fontSize: 30, color: "white" ,margin:" 10px 20px"}} /></div>
+            <div>{/*<SearchOutlinedIcon style={{ fontSize: 30, color: "white" ,margin:" 10px 20px"}} />*/}</div>
         </div>
 
         {/* date */}
@@ -215,10 +215,10 @@ function Amount() {
               <form onSubmit={formsub} >
                   
                   <label>Name : </label>
-                  <input type='text' placeholder='Untitled' className='inp'  name="name" onChange={inpfrm} value={fm.name}  required style={{marginBottom:10}}/><br/>
+                  <input type='text' placeholder='Untitled' className='inp'  name="name" onChange={inpfrm} value={fm.name}  required style={{marginBottom:10,marginLeft:30}}/><br/>
 
                   <label>Amount : </label>
-                  <input type='number' placeholder='0' className='inp'  name="amount" onChange={inpfrm} value={fm.amount} style={{width:"200px",marginBottom:10}} required/><br/>
+                  <input type='number' placeholder='0' className='inp'  name="amount" onChange={inpfrm} value={fm.amount} style={{marginBottom:10}} required/><br/>
                   
                   <div className='icn1'>
                       {addicon()}

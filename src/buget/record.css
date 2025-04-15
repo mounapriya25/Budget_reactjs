@@ -106,6 +106,12 @@ body{
     line-height: 25px;
     color :black
 }
+.err{
+    color: rgb(133, 133, 137);
+    
+}
+
+  
 @media screen and (max-width:925px){
     #gt{
         margin:100px 250px;
@@ -146,4 +152,19 @@ body{
     }
     
     
+}
+@media screen  and (max-width:600px){
+    .rnbar{
+        display: grid;
+        grid-template-columns: 20% 60% 10%;
+       
+        padding: 10px;
+        border-radius: 10px;
+        margin: 0px 20px 0px;
+        width: 90%;
+    }
+    .pgbar{
+        line-height: 25px;
+        color :black
+    }
 }

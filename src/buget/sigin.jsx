@@ -10,16 +10,23 @@ function Sigin() {
         email:" ",
         password:" "
     })
+    const [rp,setRp]=useState("")
     const nav=useNavigate()
     async function signfrm(e){
         e.preventDefault()
         console.log(form)
         const resp=await axios.post("http://localhost:8000/siginform",form)
+        setRp(resp.data.message)
         if(resp.data.message=="Sucessfully sigin"){
             localStorage.setItem("userEmail",resp.data.us.email)
             const u=localStorage.getItem("userEmail")
             console.log(u);
             nav("/home")
+            setForm({
+                username:" ",
+                email:" ",
+                password:" "
+            })
         }
         
     }
@@ -51,8 +58,9 @@ function Sigin() {
             
                 <label className='label' >Password</label><br/>
                 <input type="password" id="passwrd" name="password" placeholder="Enter your password" required onChange={sfrm}/><br/>
-                <button type="submit" className="login-btn">Sign in</button>
-                <p className="switch-theme" style={{paddingLeft:"0px"}}>Already registered ? <a href="login1.html"> Login</a></p>
+                <button type="submit" className="login-buttn">Sign in</button>
+                <p style={{color:"red"}}>{rp}</p>
+                <p className="switch-theme" style={{paddingLeft:"0px"}}>Already registered ? <a href="/login" style={{color:"blue"}}> Login</a></p>
                     
                 <div className="divider">
                     <hr className="line"/>

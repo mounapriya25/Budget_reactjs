@@ -241,3 +241,51 @@ body{
     }
     
 }
+
+@media screen and (max-width:600px){
+    .r1{
+        margin: 10px 0px 10px 10px;
+    }
+    .ah3{
+        font-weight:600;
+        display: grid;
+        grid-template-columns: 130px 120px 200px;
+        font-size: 12px;
+        margin-left: 0%;
+        color: rgb(150, 154, 152);
+    
+    }
+    .detail{
+        display: grid;
+        grid-template-columns: 20% 70% 5%;
+        margin-top: 20px;
+        border: 2px solid rgba(187, 200, 207, 0.44);
+        padding: 20px 20px 0px 10px;
+        border-radius: 15px;
+        width: 90%;
+        
+        margin-left: 5%;
+       
+    }
+    .addinp{
+        top: 80px ;
+        margin: 70px 70px 200px  0px;
+        width: 95%;
+        padding-left: 0cap;
+        height: 385px;
+        left: 10px;
+      
+        
+    }
+    .inp{
+        width:140px ;
+        margin-left: 10px;
+        
+    }
+    #add{
+        background-color: rgb(17, 60, 232);
+        margin-bottom:200px ;
+        margin-top: 70px;
+        margin-left: 23%;
+    }
+}

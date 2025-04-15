@@ -1,5 +1,5 @@
 import React from 'react'
-import "./record.css"
+import "./Record.css"
 import Menu from "@mui/icons-material/MenuOutlined"
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
@@ -13,6 +13,7 @@ import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Label } from "rechar
 import dayjs from 'dayjs';
 import  Dateft from './Dateft.jsx'
 import Side from './side.jsx'
+import Error from '@mui/icons-material/ErrorOutlined';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 
@@ -192,9 +193,9 @@ function rnBar(){
       <div className='pgbar' >
         <div>
           <div style={{float:"left",fontWeight:"bold",fontSize:"20px"}}>{i.category.name}</div>
-          <div style={{float:"right",marginRight:"230px",fontWeight:"bold",color:"red"}}>-{i.amount}{currency}</div>
+          <div style={{float:"right",marginRight:"20%",fontWeight:"bold",color:"red"}}>-{i.amount}{currency}</div>
         </div>
-        <div><progress max={total} value={i.amount} style={{ width: "300px",height: "30px",accentColor: "rgb(42, 133, 224)"}}></progress></div>
+        <div><progress max={total} value={i.amount} style={{ width: "90%",height: "30px",accentColor: "rgb(42, 133, 224)"}}></progress></div>
         
       </div>
       <div style={{fontWeight:"bold",color:"forestgreen"}}><p>{((i.amount / total) * 100).toFixed(2)}%</p></div>
@@ -210,7 +211,7 @@ function rnBar(){
         <div className='header'>
             <div><Menu style={{ fontSize: 30, color: "white",margin:" 10px 20px"}} onClick={ClickDis}/></div>
             <div style={{ fontSize: 28 ,fontWeight:700, paddingTop:10,paddingBottom:25}}>MoneyTrack</div>
-            <div><SearchOutlinedIcon style={{ fontSize: 30, color: "white" ,margin:" 10px 20px"}} /></div>
+            <div>{/*<SearchOutlinedIcon style={{ fontSize: 30, color: "white" ,margin:" 10px 20px"}} />*/}</div>
         </div>
 
         {/* date */}
@@ -260,7 +261,7 @@ function rnBar(){
             <p>Accounts</p>
             </a>
           </div>
-          <div style={{float:"left"}} className='bt' >
+          <div style={{float:"left",marginRight:0}} className='bt' >
           <a href="http://localhost:3000/categories">
                 <CategoryOutlinedIcon   style={{fontSize:"30px"}} />
                 <p>Categories</p>
@@ -268,13 +269,16 @@ function rnBar(){
             </div>
         
         </div>
-        <Side dis={dis} setDis={setDis} style={{display:(dis!="none")?"block":"none"}}/>
-        <div ><button className='add' style={{backgroundColor:'white',color:"blue"}}>+</button></div>
+        <div><Side dis={dis} setDis={setDis} style={{display:(dis!="none")?"block":"none"}}  className="overlay"/></div>
+        
+        
 
 
         {/*body*/}
 
         <div className="body">
+          {data.length>0?(
+            <div>
           {RenderPieChart()}
           
           <div className='rangebar'>
@@ -282,7 +286,9 @@ function rnBar(){
            <div>
             {rnBar()}
            </div>
-          </div>
+          </div></div>):(
+            <div className='err'><Error style={{fontSize:"40px",margin:"20% 45% 0% "}} /><p style={{color:"rgb(133, 133, 137)",textAlign:"center"}}>No Expense Records Found</p></div>
+          )}
         </div>
 
 

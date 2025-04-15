@@ -16,6 +16,7 @@ import Rd from './buget/rd';
 import Date from './buget/Dateft'
 import Side from './buget/side';
 import Profile from './buget/Profile';
+import Webpage from './buget/webpage';
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 
 
@@ -25,6 +26,7 @@ function App() {
     <div>
       <Router>
         <Routes>
+        <Route path='/' element={<Webpage/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signin' element={<Sigin/>}></Route>
           <Route path='/setpasswrd' element={<Setpass/>}></Route>

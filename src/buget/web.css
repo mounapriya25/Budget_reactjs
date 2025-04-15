@@ -1,0 +1,266 @@
+body {
+   
+    font-family: Arial, sans-serif;
+  
+  }
+  
+  .container {
+    width: 100%;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #ffffff;
+    color: blue;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 90px;
+    border: 2px  rgb(220, 220, 221);
+    border-style: none none solid none;
+    box-shadow: 2px 2px 12px 2px rgb(238, 238, 240);
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+
+  }
+  
+ 
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .auth-buttons button {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .login-btnw {
+    color: #1f64cc;
+    background-color: white;
+    border: #0254ed ;
+    width: 100px;
+    padding: 20px;
+    height: 30px;
+    padding-top: 0%;
+    
+  }
+  .login-btn:hover{
+    color: #ffffff;
+    background-color: blue;
+  }
+ 
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #ffffff;
+    background-color: blue;
+
+  }
+  
+  .wallet-icon{
+    mix-blend-mode: normal;
+    margin-bottom: 20px;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+    margin: 1rem 0 0.5rem;
+  }
+  
+  .hero h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .hero-buttons button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .black-btn {
+    background-color: black;
+    color: white;
+  }
+  
+  .green-btn {
+    background-color: green;
+    color: white;
+  }
+  
+  /* Overview Section */
+  .overview {
+    background-color: White;
+    color: rgb(111, 111, 114);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .overview strong{
+    color:blue;
+  }
+  .overview h4 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .overview .intro {
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .overview ul {
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    list-style: disc;
+    padding-left: 1.2rem;
+  }
+  
+  .overview li {
+    margin-bottom: 0.8rem;
+  }
+
+
+
+  /*----------------*/
+  .mint-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:blue;
+    text-align: center;
+    background: #f0f8f5;
+    padding: 20px;
+  }
+  
+  .mint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+  
+  .mint-logo-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu-icon {
+    font-size: 24px;
+    background: none;
+    border: none;
+    margin-right: 10px;
+  }
+  
+  .mint-logo {
+    width: 30px;
+    height: auto;
+  }
+  
+  .mint-auth-buttons .btn-outline {
+    border: 1px solid #333;
+    padding: 8px 16px;
+    margin-left: 10px;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  .lock-icon::before {
+    content: '🔒 ';
+  }
+  
+  .mint-main {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .mint-title {
+    font-size: 28px;
+    color: #0254ed;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .mint-description {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #007c72;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .mint-image img {
+    width: 200px;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+  
+  .mint-subtext {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2e2e2e;
+    padding: 10px;
+  }
+@media screen  and (max-width:600px){
+  body {
+    font-family: Arial, sans-serif;
+  
+  }
+  
+  .navbar{
+    
+    margin-left: 0%;
+  }
+  .auth-buttons {
+    display: grid;
+    grid-template-columns: 60% 30%;
+    padding: 10px;
+    margin-left: 10%;
+  }
+  .login-btnw {
+    color: #1f64cc;
+    background-color: white;
+    border: #0254ed ;
+    width: 80px;
+    padding: 10px;
+    padding-top: 0%;
+    
+    
+  }
+  .lg{
+   
+    color: #1f64cc;
+  }
+  
+}

@@ -27,6 +27,11 @@ import DataUsageOutlined from "@mui/icons-material/DataUsageOutlined";    // Dat
 import Dot from "@mui/icons-material/MoreHoriz";
 
  // Calculator Icon
+ /*https://fastbudget.app/images/app_icon_256.png
+ https://play-lh.googleusercontent.com/pzpxL7sSPuKXoZ4A6Bw3x8E11BW-LgFUOpV656l0sb-Ty9_dj8RfC-Fvq9MyvgIZXbw
+ https://play-lh.googleusercontent.com/27oDxUYHG9xiHxgktqespIj16pilDpimWsuJY0UDMl3mpAn9P2kGodn8Rr1ejNvULw=w240-h480-rw
+ https://liteapks.com/wp-content/uploads/2024/12/money-manager-expense-tracker.webp
+ https://play-lh.googleusercontent.com/u1QGESWPpl21kFphCFYP5JaHeAdDnxSA3g_PiGmG00LaYf4-dhpsjkHYyEUGGPkTnA*/ 
 function Trail() {
     const u=localStorage.getItem("userEmail")
     console.log(u,"in trail");

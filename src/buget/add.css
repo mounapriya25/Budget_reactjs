@@ -157,3 +157,59 @@ form{
         margin-left: 0px;
     }
 }
+@media screen  and (max-width:600px){
+    .box{
+        height:100%;
+        width: 100%;
+        
+    }
+    .h1{
+        float: left;
+        font-weight: bold;
+        font-size: medium;
+       
+        
+    }
+    .h2{
+        margin-right: 50px;
+    
+    }
+    
+    .ac{
+        
+        width: 43%;
+        height: 60px;
+        color: #777a7a;
+        margin: 10px 10px 20px 10px;
+    }
+    .radio-container {
+       
+        left: 10%;
+        top: 10%;
+        margin-bottom: 30px;
+        white-space: nowrap; /* Prevent line breaks */
+        display: flex;       /* Use flexbox for inline layout */
+        gap: 0px;           /* Control the space between the labels */
+        align-items: center; /* Align buttons and text vertically */
+    }
+    
+    .radio-container label {
+        
+        display: flex;
+        margin: 0px; 
+        align-items: center; /* Center the radio button and label text vertically */
+    }
+    
+    .radio-container input[type="radio"] {
+      
+        margin: 5px 5px 0px 5px;   /* Control space between the button and label text */
+    }
+    
+    form{
+        margin-left: 0px;
+       line-height: 10px;
+    }
+    input{
+        width: 10px;
+    }
+}

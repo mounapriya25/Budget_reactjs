@@ -12,6 +12,7 @@ import Delete from '@mui/icons-material/DeleteOutlined';
 import Edit from '@mui/icons-material/EditOutlined';
 import Close from '@mui/icons-material/CloseOutlined';
 import Arrow from '@mui/icons-material/ArrowForwardOutlined';
+import Error from '@mui/icons-material/ErrorOutlined';
 import axios from "axios"
 import dayjs from "dayjs"
 import  Dateft from './Dateft.jsx'
@@ -209,17 +210,21 @@ function Rd() {
   }
 
   //date
-  function disdate(d){
-    const date=new Date(d)
-    const options ={
-      year:"numeric",
-      month:"long",
-      day:"numeric",
-      hour:"numeric",
-      minute:"2-digit",
-      hour12: true,
-    }
-    return date.toLocaleDateString("en-US", options)
+  function disdate(d,t){
+    const combined = `${d.split("T")[0]}T${t}:00`; // e.g., "2025-04-15T10:17:00"
+  const date = new Date(combined);
+
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "Asia/Kolkata", // optional if you want to control timezone
+  };
+
+  return date.toLocaleString("en-US", options);
   }
  
   
@@ -336,7 +341,7 @@ function Rd() {
         </div>
           <p style={{color:"white",paddingTop:80}}>{i.typename}</p>
           <p style={{color:"white",fontSize:30,lineHeight:0}}>{i.amount}{currency}</p>
-          <div style={{float:"right",marginRight:20}}>{disdate(i.date)}</div>
+          <div style={{float:"right",marginRight:20}}>{disdate(i.date,i.time)}</div>
       </div>
       <div className='data2'>
         <div style={{float:"left",marginLeft:"20%"}}><p>Account : </p></div>
@@ -393,7 +398,7 @@ function Rd() {
           MoneyTrack
         </div>
         <div>
-          <SearchOutlinedIcon style={{ fontSize: 30, color: 'white', margin: '10px 20px' }} />
+          {/*<SearchOutlinedIcon style={{ fontSize: 30, color: 'white', margin: '10px 20px' }} />*/}
         </div>
       </div>
 
@@ -447,7 +452,7 @@ function Rd() {
           </a>
         </div>
         
-        <div style={{ float: 'left' }} className="bt" >
+        <div  className="bt" style={{ float: 'left' ,marginRight:"0px"}}   >
         <a href="http://localhost:3000/categories">
           <CategoryOutlinedIcon style={{ fontSize: '30px' }} />
           <p>Categories</p>

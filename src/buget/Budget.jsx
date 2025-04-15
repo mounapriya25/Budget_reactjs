@@ -243,13 +243,13 @@ function disBg(){
 
       {/* header - money tracker*/}
         <div className='header'>
-            <div><Menu style={{ fontSize: 30, color: "white",margin:" 10px 20px"}} onClick={ClickDis}/></div>
+            <div><Menu style={{ fontSize: 30, color: "white",margin:" 10px 20px",position:"fixed"}} onClick={ClickDis}/></div>
             <div style={{ fontSize: 28 ,fontWeight:900, paddingTop:10,paddingBottom:15}}>MoneyTrack</div>
-            <div><SearchOutlinedIcon style={{ fontSize: 30, color: "white" ,margin:" 10px 20px"}} /></div>
+            <div>{/*<SearchOutlinedIcon style={{ fontSize: 30, color: "white" ,margin:" 10px 20px"}} />*/}</div>
         </div>
 
         {/* date */}
-        <div className='header2'>
+        <div className='header2b' style={{backgroundColor:"white"}}>
           <div >
              <BudgetDateft currentDt={currentDt} setcurrentDt={setcurrentDt}/>
           </div>
@@ -289,7 +289,7 @@ function disBg(){
             <p>Account</p>
             </a>
           </div>
-          <div style={{float:"left"}} className='bt' >
+          <div style={{float:"left",marginRight:0}} className='bt' >
           <a href="http://localhost:3000/categories">
                 <CategoryOutlinedIcon   style={{fontSize:"30px"}} />
                 <p>Categories</p>

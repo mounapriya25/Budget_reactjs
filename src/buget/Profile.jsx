@@ -183,6 +183,12 @@ function Profile() {
         console.log(err.message)
       }
   };
+
+  const LogoutSubmit = (e) => {
+    e.preventDefault();
+    localStorage.clear()
+    nav("/login")
+  };
   function profile(){
     return (
         <div className="form-card">
@@ -218,7 +224,7 @@ function Profile() {
             /><br/>
 
             <button type="submit" className='button1'>Save</button>
-            <div style={{float:"right",margin:"20px 90px"}}><button style={{backgroundColor:"red",border:"none"}} onClick={Cancle}>Cancle</button></div>
+            <div style={{float:"right"}}><button style={{backgroundColor:"red",border:"none"}} onClick={Cancle} className='canc'>Cancle</button></div>
           </form>
         </div>
     )
@@ -266,7 +272,7 @@ function Profile() {
 
 
             <button type="submit"  className='button1'>Save</button>
-            <div style={{float:"right",margin:"20px 90px"}}><button style={{backgroundColor:"red",border:"none"}} onClick={Cancle}>Cancle</button></div>
+            <div style={{float:"right"}}><button style={{backgroundColor:"red",border:"none"}} onClick={Cancle} className='canc'>Cancle</button></div>
           </form>
         </div>
     )
@@ -287,7 +293,7 @@ function Profile() {
         <label><input type="radio" name="currency" value="¥" checked={Modeform.currency==="¥"} onChange={ChangeMode}/>Yen (¥)</label><br /><br />
 
         <button type="submit" className='button1'>Save</button>
-        <div style={{float:"right",margin:"20px 90px"}}><button style={{backgroundColor:"red",border:"none"}} onClick={Cancle}>Cancle</button></div>
+        <div style={{float:"right"}}><button style={{backgroundColor:"red",border:"none"}} className='canc' onClick={Cancle}>Cancle</button></div>
       </form>
         </div>
     )
@@ -306,7 +312,7 @@ function Profile() {
        
         
         <button type="submit" className='button1'>Save</button>
-        <div style={{float:"right",margin:"20px 90px"}}><button style={{backgroundColor:"red",border:"none"}} onClick={Cancle}>Cancle</button></div>
+        <div style={{float:"right"}}><button style={{backgroundColor:"red",border:"none"}} className='canc' onClick={Cancle}>Cancle</button></div>
       </form>
         </div>
     )
@@ -322,7 +328,7 @@ function Profile() {
             <input type="Date" name="from"  className='input' placeholder="From date" value={Exportform.from} onChange={ChangeExp}/><br/>
             <label className='label'>To</label><br/>
             <input type="Date" name="to" className='input'  placeholder="To date" value={Exportform.to} onChange={ChangeExp}/><br/>
-            <div style={{float:"right",margin:"0px 90px"}}><button style={{backgroundColor:"blue",border:"none"}} onClick={Cancle}>Cancle</button></div>
+            <div style={{float:"right",margin:"0px 15px"}}><button style={{backgroundColor:"blue",border:"none"}}   onClick={Cancle}>Cancle</button></div>
             <div><button style={{backgroundColor:"red",border:"none"}} type='submit'>PDF</button></div>
           
       </form>
@@ -336,7 +342,7 @@ function Profile() {
           <p style={{color:"rgb(107, 108, 112)",paddingLeft:40}}>Restting webapp to its initial state,deleting current records,accounts categories and budgets.Do you want to Reset ? </p>
           <form onSubmit={ResetSubmit} >
            
-            <div style={{float:"right",margin:"0px 90px"}}><button style={{backgroundColor:"blue",border:"none"}} onClick={Cancle}>Cancle</button></div>
+            <div style={{float:"right",margin:"0px 15px"}}><button style={{backgroundColor:"blue",border:"none"}}   onClick={Cancle}>Cancle</button></div>
             <div><button style={{backgroundColor:"red",border:"none"}} type='submit'>Yes</button></div>
           
       </form>
@@ -350,7 +356,24 @@ function Profile() {
           <p style={{color:"rgb(107, 108, 112)",paddingLeft:40}}>Delete all records ,but kepping current accounts ,categories and budgets. Do you want to Delete ? </p>
           <form onSubmit={DelSubmit} >
            
-            <div style={{float:"right",margin:"0px 90px"}}><button style={{backgroundColor:"blue",border:"none"}} onClick={Cancle}>Cancle</button></div>
+            <div style={{float:"right",margin:"0px 15px"}}><button style={{backgroundColor:"blue",border:"none"}} onClick={Cancle}>Cancle</button></div>
+            <div><button style={{backgroundColor:"red",border:"none"}} type='submit'>Yes</button></div>
+          
+      </form>
+        </div>
+    )
+  }
+  
+  
+  function Logout(){
+    return (
+        <div className="form-card">
+          <h2 style={{color:"blue"}}>Log out</h2>
+          
+          <p style={{color:"rgb(107, 108, 112)",paddingLeft:0,textAlign:"center"}}> Do you want to log out your account? </p>
+          <form onSubmit={LogoutSubmit} >
+           
+            <div style={{float:"right",margin:"0px 15px"}}><button style={{backgroundColor:"blue",border:"none"}}  onClick={Cancle}>Cancle</button></div>
             <div><button style={{backgroundColor:"red",border:"none"}} type='submit'>Yes</button></div>
           
       </form>
@@ -367,6 +390,7 @@ function Profile() {
        {activeTab==="export" && (<div>{Export()}</div>)}
        {activeTab==="reset" && (<div>{Reset()}</div>)}
        {activeTab==="delete" && (<div>{Delete()}</div>)}
+       {activeTab==="logout" && (<div>{Logout()}</div>)}
       
 
       

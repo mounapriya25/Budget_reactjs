@@ -90,9 +90,9 @@ function Side({dis,setDis}) {
       </div>
 
       <hr/>
-      <div onClick={() => handleClick("notifications")}>
-        <Notification style={{color:"blue"  ,float:"left",margin:"0px 10px 0px 5px"}} />
-        <p style={{color: active === "notifications" ? "blue" : "black"}}>Notifications</p>
+      <div onClick={() => handleClick("logout")}>
+        <Logout style={{color:"blue"  ,float:"left",margin:"0px 10px 0px 5px"}} />
+        <p style={{color: active === "logout" ? "blue" : "black"}}>Logout</p>
       </div>
     </div>
   );

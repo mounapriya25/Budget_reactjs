@@ -171,7 +171,7 @@ function eidt(e,id,name,type,icon){
       <div className='header'>
         <Menu style={{ fontSize: 30, color: "white", margin: "10px 20px" }} onClick={ClickDis}/>
         <div style={{ fontSize: 28, fontWeight: 900, paddingTop: 10, paddingBottom: 15 }}>MoneyTrack</div>
-        <SearchOutlinedIcon style={{ fontSize: 30, color: "white", margin: "10px 20px" }} />
+        {/*<SearchOutlinedIcon style={{ fontSize: 30, color: "white", margin: "10px 20px" }} />*/}
       </div>
 
       {/* Summary */}
@@ -190,27 +190,29 @@ function eidt(e,id,name,type,icon){
 
       {/* Navigation Icons */}
       <div className='bottom'>
-          <div className='bt lf' >
+          <div className='btc lf' >
           <a href="http://localhost:3000/rd">
             <FactCheckOutlinedIcon style={{ fontSize: "30px" }} /><p>Records</p>
             </a>
           </div>
-        <div className='bt' >
+        <div className='btc' >
         <a href="http://localhost:3000/analysis">
           <DataUsageOutlined style={{ fontSize: "30px" }} /><p>Analysis</p>
           </a>
           </div>
-        <div className='bt'>
+        <div className='btc'>
         <a href="http://localhost:3000/budget">
           <MoneyBagOutlined style={{ fontSize: "30px" }} onClick={() => nav("/budget")}/><p>Budget</p>
           </a>
           </div>
-        <div className='bt'>
+        <div className='btc'>
         <a href="http://localhost:3000/amount">
           <AccountBalanceWalletOutlinedIcon style={{ fontSize: "30px" }} /><p>Account</p>
           </a></div>
-        <div  style={{ float: "left", color: "blue",lineHeight:"0px" }}><CategoryOutlinedIcon style={{ fontSize: "30px"}}/><p>Categories</p></div>
+        <div ><div  style={{ float: "left", color: "blue",lineHeight:"0px",marginRight:0 }} className='btc'><CategoryOutlinedIcon style={{ fontSize: "30px"}}/><p>Categories</p></div></div>
       </div>
+
+
 <Side dis={dis} setDis={setDis} style={{display:(dis!="none")?"block":"none"}}/>
       {/* Income Categories */}
       <div className='body1'style={{marginTop:"180px"}}>
@@ -239,7 +241,7 @@ function eidt(e,id,name,type,icon){
       <center> <h2 >{operation} Category</h2></center>
         <form onSubmit={formsub} >
             {/*checked attribute is used for checkboxes and radio buttons to control their state dynamically.we must use checked  to explicitly control their selection.*/}
-            <div class="radio-container" >
+            <div class="radio-container1" >
                 <label><input type="radio" name="type" value="Income" onChange={inpfrm} checked={frm.type==="Income"} />INCOME</label>
                 <label><input type="radio" name="type" value="Expense" onChange={inpfrm}  checked={frm.type==="Expense"}/>EXPENSES</label>
                 

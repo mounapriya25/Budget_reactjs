@@ -95,4 +95,27 @@
     margin: 0px ;
     color:rgb(136, 134, 132)
   }
-  
+  .canc{
+    margin:20px 90px 0% 0%;
+  }
+  @media screen and (max-width:600px){
+    .settings-container {
+      max-width: 80%;
+      margin: 100px auto ;
+      background: #fff;
+      padding: 25px 0px;
+      
+    }
+    input {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      width:180px;
+      margin-top:20px
+    }
+    .canc{
+      margin: 20px 13px ;
+    }
+    
+}
