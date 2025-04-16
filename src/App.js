@@ -26,7 +26,7 @@ function App() {
     <div>
       <Router>
         <Routes>
-        <Route path='/' element={<Webpage/>}></Route>{/*
+        <Route path='/' element={<Webpage/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signin' element={<Sigin/>}></Route>
           <Route path='/setpasswrd' element={<Setpass/>}></Route>
@@ -43,7 +43,7 @@ function App() {
           <Route path="/d" element={<Date/>}></Route>
           <Route path="/s" element={<Side/>}></Route>
           <Route path="/settings" element={<Profile/>}></Route>
-*/}
+
 
         </Routes>
       </Router>
