@@ -3,11 +3,12 @@ import './lauth.css'
 import { useEffect,useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 function Login() {
     const [form,setForm]=useState({
-        email:" ",
-        password:" "
+        email:"",
+        password:""
     });
 
     const nav = useNavigate()
@@ -15,18 +16,18 @@ function Login() {
 
     function github(e){
         e.preventDefault()
-        window.location.href="http://localhost:8000/auth/github";
+        window.location.href=`${backendUrl}/auth/github`
     }
     function google(e){
         e.preventDefault()
-        window.location.href="http://localhost:8000/auth/google";
+        window.location.href=`${backendUrl}/auth/google`
     }
     async function loginform(event){
         event.preventDefault();
         console.log(form.email,form.password)
-        const res=await axios.post("http://localhost:8000/loginform",form)
+        const res=await axios.post(`${backendUrl}/loginform`,form)
         if(res.data.message=="success"){
-            const rp=await axios.post("http://localhost:8000/home",{},{headers:{Authorization:`Bearer ${res.data.token}`}}) 
+            const rp=await axios.post(`${backendUrl}/home`,{},{headers:{Authorization:`Bearer ${res.data.token}`}}) 
             console.log(rp)
             setResp(rp)
             if(rp.data.message=="successfully login"){
@@ -35,8 +36,8 @@ function Login() {
                 console.log(u);
                 nav("/home")
                 setForm({
-                    email:" ",
-                    password:" "
+                    email:"",
+                    password:""
                 })
             }
         }

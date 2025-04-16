@@ -16,6 +16,7 @@ import Side from './side.jsx'
 import Error from '@mui/icons-material/ErrorOutlined';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 function Analysis() {
 
@@ -53,7 +54,7 @@ function Analysis() {
   const fetchExpenses = async () => {
     try {
       console.log(em)
-      const res=await axios.post("http://localhost:8000/getRd",{em})
+      const res=await axios.post(`${backendUrl}/getRd`,{em})
       console.log(res.data.rd)
       setTotaldata(res.data.rd); 
     } catch (error) {
@@ -240,7 +241,7 @@ function rnBar(){
         </div>
         <div className='bottom'>
           <div className='bt'  id="icon" >
-          <a href="http://localhost:3000/rd">
+          <a href="/rd">
             <FactCheckOutlinedIcon     style={{fontSize:"30px"}}/>
             <p>Records</p>
             </a>
@@ -250,19 +251,19 @@ function rnBar(){
             <p>Analysis</p>
           </div>
           <div className='bt' >
-          <a href="http://localhost:3000/budget">
+          <a href="/budget">
             <MoneyBagOutlined   style={{fontSize:"30px"}} />
             <p>Budget</p>
             </a>
           </div>
           <div  className='bt' >
-          <a href="http://localhost:3000/amount">
+          <a href="/amount">
             <AccountBalanceWalletOutlinedIcon   style={{fontSize:"30px"}}  />
             <p>Accounts</p>
             </a>
           </div>
           <div style={{float:"left",marginRight:0}} className='bt' >
-          <a href="http://localhost:3000/categories">
+          <a href="/categories">
                 <CategoryOutlinedIcon   style={{fontSize:"30px"}} />
                 <p>Categories</p>
                 </a>

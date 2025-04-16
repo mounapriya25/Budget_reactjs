@@ -19,7 +19,7 @@ import  Dateft from './Dateft.jsx'
 import Side from './side.jsx'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 function Rd() {
 
@@ -57,7 +57,7 @@ function Rd() {
   //get records
   const getRecord=async()=>{
     try{
-      const res=await axios.post("http://localhost:8000/getRd",{em})
+      const res=await axios.post(`${backendUrl}/getRd`,{em})
       console.log(res.data.rd)
       setTotalrecords(res.data.rd)
     }catch(err){
@@ -69,7 +69,7 @@ function Rd() {
   //get settings
   const getSettings=async()=>{
     try{
-      const res=await axios.post("http://localhost:8000/getSettings",{em})
+      const res=await axios.post(`${backendUrl}/getSettings`,{em})
       console.log(res.data.st)
       localStorage.setItem("theme",res.data.st.theme)
       localStorage.setItem("mode",res.data.st.mode)
@@ -270,8 +270,8 @@ function Rd() {
   }
   async function delt(e,id){
     e.preventDefault()
-    const undoAm1 =await axios.put("http://localhost:8000/putAmInEdit",{id})
-    const rp= await axios.delete("http://localhost:8000/deleteRd",{data:{id}})
+    const undoAm1 =await axios.put(`${backendUrl}/putAmInEdit`,{id})
+    const rp= await axios.delete(`${backendUrl}/deleteRd`,{data:{id}})
      
     getRecord()
   }
@@ -434,26 +434,26 @@ function Rd() {
           
         </div>
         <div className="bt" >
-        <a href="http://localhost:3000/analysis">
+        <a href="/analysis">
           <DataUsageOutlined style={{ fontSize: '30px' }} />
           <p>Analysis</p>
           </a>
         </div>
         <div className="bt" >
-        <a href="http://localhost:3000/budget">
+        <a href="/budget">
           <MoneyBagOutlined style={{ fontSize: '30px' }} />
           <p>Budget</p>
           </a>
         </div>
         <div className="bt" >
-        <a href="http://localhost:3000/amount">
+        <a href="/amount">
           <AccountBalanceWalletOutlinedIcon style={{ fontSize: '30px' }} />
           <p>Accounts</p>
           </a>
         </div>
         
         <div  className="bt" style={{ float: 'left' ,marginRight:"0px"}}   >
-        <a href="http://localhost:3000/categories">
+        <a href="/categories">
           <CategoryOutlinedIcon style={{ fontSize: '30px' }} />
           <p>Categories</p>
           </a>

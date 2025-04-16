@@ -14,6 +14,7 @@ import dayjs from "dayjs"
 import Side from './side.jsx'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 function Budget() {
   dayjs.extend(isSameOrAfter )
@@ -52,17 +53,17 @@ function Budget() {
   
 
   async function getTranRd(){
-    const res = await axios.post("http://localhost:8000/getTranBg",{em});
+    const res = await axios.post(`${backendUrl}/getTranBg`,{em});
     console.log(res.data.tn)
     setTran(res.data.tn)
   }
   async function getCat(){
-    const res = await axios.post("http://localhost:8000/getCatBg",{em});
+    const res = await axios.post(`${backendUrl}/getCatBg`,{em});
     console.log(res.data)
     setCat(res.data.cat)
   }
   async function getBugetRd(){
-    const res = await axios.post("http://localhost:8000/getBudget",{em});
+    const res = await axios.post(`${backendUrl}/getBudget`,{em});
     console.log(res.data.bg)
     setTotalBud(res.data.bg)
   }
@@ -125,7 +126,7 @@ function Budget() {
   async function delt(e,id){
     e.preventDefault();
     console.log(id)
-    const res=await axios.delete("http://localhost:8000/deleteBudget",{data:{id}})
+    const res=await axios.delete(`${backendUrl}/deleteBudget`,{data:{id}})
     console.log(res.data)
     getBugetRd();
   
@@ -146,11 +147,11 @@ const frmsub=async(e,id)=>{
   console.log(frm)
   if(operation==="Set"){
     console.log(frm,"jjjjjjjjjjjjjjj")
-    const rp=await axios.post("http://localhost:8000/addBudget",frm);
+    const rp=await axios.post(`${backendUrl}/addBudget`,frm);
     console.log(rp.data);
   }
   else{
-    const rp=await axios.put("http://localhost:8000/updateBudget",frm);
+    const rp=await axios.put(`${backendUrl}/updateBudget`,frm);
     console.log(rp.data);
   }
 getBugetRd();
@@ -268,13 +269,13 @@ function disBg(){
         </div>
         <div className='bottom' >
           <div className='bt'  id="icon" >
-          <a href="http://localhost:3000/rd">
+          <a href="/rd">
             <FactCheckOutlinedIcon     style={{fontSize:"30px"}} />
             <p>Records</p>
             </a>
           </div>
           <div  className='bt'>
-          <a href="http://localhost:3000/analysis">
+          <a href="/analysis">
             <DataUsageOutlined   style={{fontSize:"30px"}} />
             <p>Analysis</p>
             </a>
@@ -284,13 +285,13 @@ function disBg(){
             <p>Budget</p>
           </div>
           <div  className='bt' >
-          <a href="http://localhost:3000/amount">
+          <a href="/amount">
             <AccountBalanceWalletOutlinedIcon   style={{fontSize:"30px"}}  />
             <p>Account</p>
             </a>
           </div>
           <div style={{float:"left",marginRight:0}} className='bt' >
-          <a href="http://localhost:3000/categories">
+          <a href="/categories">
                 <CategoryOutlinedIcon   style={{fontSize:"30px"}} />
                 <p>Categories</p>
                 </a>

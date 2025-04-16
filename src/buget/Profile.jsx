@@ -3,6 +3,7 @@ import './Profile.css';
 import { useNavigate,useLocation } from 'react-router-dom';
 import axios from 'axios';
 import dayjs from 'dayjs';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 
 function Profile() {
@@ -65,7 +66,7 @@ function Profile() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try{
-        const res= await axios.put("http://localhost:8000/updateProfile",formData)
+        const res= await axios.put(`${backendUrl}/updateProfile`,formData)
         if(res.data.message==="sucess"){
           localStorage.setItem("userEmail",res.data.au.email)
           const u=localStorage.getItem("userEmail")
@@ -84,7 +85,7 @@ function Profile() {
     e.preventDefault();
     console.log('Saved data:', Passform);
     try{
-      const res= await axios.put("http://localhost:8000/changePassword",Passform)
+      const res= await axios.put(`${backendUrl}/changePassword`,Passform)
       setResPass(res.data.message)
       if(res.data.message==="Password change successfully"){
         nav("/rd")
@@ -107,7 +108,7 @@ function Profile() {
     e.preventDefault();
     console.log('Saved data:', Modeform);
     try{
-      const res= await axios.put("http://localhost:8000/changeCurrency",Modeform)
+      const res= await axios.put(`${backendUrl}/changeCurrency`,Modeform)
       if(res.data.message==="successfully"){
         nav("/rd")
       }
@@ -120,7 +121,7 @@ function Profile() {
     e.preventDefault();
     console.log('Saved data:', Modeform);
     try{
-      const res= await axios.put("http://localhost:8000/changeMode",Modeform)
+      const res= await axios.put(`${backendUrl}/changeMode`,Modeform)
       if(res.data.message==="successfully"){
         nav("/rd")
       }
@@ -143,7 +144,7 @@ function Profile() {
     console.log('Saved data:', Exportform);
     //learn
     try{
-      const res= await axios.get("http://localhost:8000/exportpdf",{params:Exportform,responseType:"blob"})
+      const res= await axios.get(`${backendUrl}/exportpdf`,{params:Exportform,responseType:"blob"})
       const url= window.URL.createObjectURL(new Blob([res.data]))
       const a=document.createElement('a')
       a.href=url
@@ -161,7 +162,7 @@ function Profile() {
     e.preventDefault();
   
     try{
-      const res= await axios.delete("http://localhost:8000/reset",{data:{em}})
+      const res= await axios.delete(`${backendUrl}/reset`,{data:{em}})
       if(res.data.message==="successfully"){
         const income=localStorage.setItem("Income",0)
         const expense=localStorage.setItem("Expense",0)
@@ -175,7 +176,7 @@ function Profile() {
     e.preventDefault();
   
     try{
-      const res= await axios.delete("http://localhost:8000/deleteAllRd",{data:{em}})
+      const res= await axios.delete(`${backendUrl}/deleteAllRd`,{data:{em}})
       if(res.data.message==="successfully"){
         nav("/rd")
       }

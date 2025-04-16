@@ -10,6 +10,8 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import axios from "axios";
 import Dot from "@mui/icons-material/MoreHoriz";
 import Side from './side.jsx'
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 function Amount() {
    
     const em=localStorage.getItem("userEmail")
@@ -49,7 +51,7 @@ function Amount() {
   async function getAm(){
     try{
       
-      const res=await axios.post("http://localhost:8000/getAm",{em})
+      const res=await axios.post(`${backendUrl}/getAm`,{em})
       console.log(res.data.acc)
       //setAcc(res.data.acc)
       localStorage.setItem("am",JSON.stringify(res.data.acc));
@@ -68,7 +70,7 @@ function Amount() {
      localStorage.setItem("amount",am)
   }
   async function getTranRd(){
-    const res = await axios.post("http://localhost:8000/getTranBg",{em});
+    const res = await axios.post(`${backendUrl}/getTranBg`,{em});
     console.log(res.data.tn)
     setTran(res.data.tn)
   }
@@ -104,7 +106,7 @@ function Amount() {
   }
   const delt=async(e,id)=>{
     e.preventDefault()
-    const rp=await axios.delete("http://localhost:8000/delAm",{data:{id}})
+    const rp=await axios.delete(`${backendUrl}/delAm`,{data:{id}})
       console.log(rp.data)
       getAm()
   }
@@ -115,11 +117,11 @@ function Amount() {
     e.preventDefault();
     document.getElementById("addinp").style.display="none";
     if(operation==="Add"){
-      const rp=await axios.post("http://localhost:8000/addAm",fm)
+      const rp=await axios.post(`${backendUrl}/addAm`,fm)
       console.log(rp.data)
     }
     else{
-      const rp=await axios.put("http://localhost:8000/putAm",fm)
+      const rp=await axios.put(`${backendUrl}/putAm`,fm)
       console.log(rp.data)
       setOperation("Add")
       setfm({...fm,id:"",name:"",amount:0,icon:""})
@@ -172,19 +174,19 @@ function Amount() {
         </div>
         <div className='bottom'>
           <div className='bt'  id="icon" >
-          <a href="http://localhost:3000/rd">
+          <a href="/rd">
             <FactCheckOutlinedIcon     style={{fontSize:"30px"}} />
             <p>Records</p>
             </a>
           </div>
           <div  className='bt'>
-          <a href="http://localhost:3000/analysis">
+          <a href="/analysis">
             <DataUsageOutlined   style={{fontSize:"30px"}} />
             <p>Analysis</p>
             </a>
           </div>
           <div className='bt' >
-          <a href="http://localhost:3000/budget">
+          <a href="/budget">
             <MoneyBagOutlined   style={{fontSize:"30px"}} />
             <p>Budget</p>
             </a>
@@ -194,7 +196,7 @@ function Amount() {
             <p>Account</p>
           </div>
           <div style={{float:"left",marginRight:0}}   className='bt'>
-          <a href="http://localhost:3000/categories">
+          <a href="/categories">
                 <CategoryOutlinedIcon   style={{fontSize:"30px"}} />
                 <p>Categories</p>
                 </a>

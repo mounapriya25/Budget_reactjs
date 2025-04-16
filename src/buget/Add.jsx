@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import "./add.css"
 import {useState} from 'react'
 import {useNavigate,useLocation} from 'react-router-dom'
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
@@ -24,7 +25,7 @@ function Add() {
         try{
             const email=frm.email
             console.log(frm.email)
-            const res=await axios.post("http://localhost:8000/getcatAcc",{email})
+            const res=await axios.post(`${backendUrl}/getcatAcc`,{email})
             console.log(res.data)
             setCat(res.data.cat)
             setAct(res.data.acc)
@@ -144,13 +145,13 @@ function Add() {
         }
         else{
             if(operation==="Add"){
-            const fres=await axios.post("http://localhost:8000/addRd",frm)
-            const upAm =await axios.put("http://localhost:8000/putAmInAdd",frm)
+            const fres=await axios.post(`${backendUrl}/addRd`,frm)
+            const upAm =await axios.put(`${backendUrl}/putAmInAdd`,frm)
            
             }else{
-                const undoAm1 =await axios.put("http://localhost:8000/putAmInEdit",frm)
-                const fres =await axios.put("http://localhost:8000/updateRd",frm)
-                const upAm =await axios.put("http://localhost:8000/putAmInAdd",frm)
+                const undoAm1 =await axios.put(`${backendUrl}/putAmInEdit`,frm)
+                const fres =await axios.put(`${backendUrl}/updateRd`,frm)
+                const upAm =await axios.put(`${backendUrl}/putAmInAdd`,frm)
             }
            // 
             nav("/rd")

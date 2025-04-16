@@ -12,6 +12,7 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import Dot from "@mui/icons-material/MoreHoriz";
 import axios from "axios";
 import Side from './side.jsx'
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
  
 function Category() {
   const em=localStorage.getItem("userEmail")
@@ -42,7 +43,7 @@ function Category() {
   const getCat= async()=>{
     try {
       console.log(em, "Fetching Categories...");
-      const rep = await axios.post("http://localhost:8000/getCat", {em});
+      const rep = await axios.post(`${backendUrl}/getCat`, {em});
       if (rep.data) {
         setUscat(rep.data.categories || []);
       }
@@ -129,11 +130,11 @@ async function formsub(e){
   document.getElementById("addinp").style.display="none";
   document.getElementById("bd").style.opacity=1;
   if(operation==="Add"){
-    const res=await axios.post("http://localhost:8000/addCat",frm);
+    const res=await axios.post(`${backendUrl}/addCat`,frm);
     console.log(res.data)
   }
   else{
-    const ures=await axios.put("http://localhost:8000/updateCat",frm);
+    const ures=await axios.put(`${backendUrl}/updateCat`,frm);
     console.log(ures.data)
   }
   getCat();
@@ -159,7 +160,7 @@ function eidt(e,id,name,type,icon){
  async function delt(e,id){
   e.preventDefault();
   console.log(id)
-  const res=await axios.delete("http://localhost:8000/deleteCat",{data:{id}})
+  const res=await axios.delete(`${backendUrl}/deleteCat`,{data:{id}})
   console.log(res.data)
   getCat();
 
@@ -191,22 +192,22 @@ function eidt(e,id,name,type,icon){
       {/* Navigation Icons */}
       <div className='bottom'>
           <div className='btc lf' >
-          <a href="http://localhost:3000/rd">
+          <a href="/rd">
             <FactCheckOutlinedIcon style={{ fontSize: "30px" }} /><p>Records</p>
             </a>
           </div>
         <div className='btc' >
-        <a href="http://localhost:3000/analysis">
+        <a href="/analysis">
           <DataUsageOutlined style={{ fontSize: "30px" }} /><p>Analysis</p>
           </a>
           </div>
         <div className='btc'>
-        <a href="http://localhost:3000/budget">
+        <a href="/budget">
           <MoneyBagOutlined style={{ fontSize: "30px" }} onClick={() => nav("/budget")}/><p>Budget</p>
           </a>
           </div>
         <div className='btc'>
-        <a href="http://localhost:3000/amount">
+        <a href="/amount">
           <AccountBalanceWalletOutlinedIcon style={{ fontSize: "30px" }} /><p>Account</p>
           </a></div>
         <div ><div  style={{ float: "left", color: "blue",lineHeight:"0px",marginRight:0 }} className='btc'><CategoryOutlinedIcon style={{ fontSize: "30px"}}/><p>Categories</p></div></div>

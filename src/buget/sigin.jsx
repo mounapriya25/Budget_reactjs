@@ -3,19 +3,21 @@ import './lauth.css'
 import {useEffect,useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 function Sigin() {
     const [form,setForm]=useState({
-        username:" ",
-        email:" ",
-        password:" "
+        username:"",
+        email:"",
+        password:""
     })
     const [rp,setRp]=useState("")
     const nav=useNavigate()
     async function signfrm(e){
         e.preventDefault()
         console.log(form)
-        const resp=await axios.post("http://localhost:8000/siginform",form)
+       // const resp=await axios.post("http://localhost:8000/siginform",form)
+       const resp=await axios.post(`${backendUrl}/siginform`,form)
         setRp(resp.data.message)
         if(resp.data.message=="Sucessfully sigin"){
             localStorage.setItem("userEmail",resp.data.us.email)
@@ -23,9 +25,9 @@ function Sigin() {
             console.log(u);
             nav("/home")
             setForm({
-                username:" ",
-                email:" ",
-                password:" "
+                username:"",
+                email:"",
+                password:""
             })
         }
         
@@ -37,11 +39,11 @@ function Sigin() {
     }
     function google(e){
         e.preventDefault();
-        window.location.href="http://localhost:8000/auth/google"
+        window.location.href=`${backendUrl}/auth/google`
     }
     function github(e){
         e.preventDefault();
-        window.location.href="http://localhost:8000/auth/github"
+        window.location.href=`${backendUrl}/auth/github`
     }
     
   return (
