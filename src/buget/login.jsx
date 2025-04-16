@@ -3,7 +3,8 @@ import './lauth.css'
 import { useEffect,useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+//const backendUrl = import.meta.env.VITE_BACKEND_URL;
+const backendUrl = process.env.VITE_BACKEND_URL;
 console.log("Backend URL:", backendUrl); 
 function Login() {
     const [form,setForm]=useState({

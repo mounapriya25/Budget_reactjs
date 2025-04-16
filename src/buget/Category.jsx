@@ -12,7 +12,8 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import Dot from "@mui/icons-material/MoreHoriz";
 import axios from "axios";
 import Side from './side.jsx'
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+//const backendUrl = import.meta.env.VITE_BACKEND_URL;
+const backendUrl = process.env.VITE_BACKEND_URL;
  
 function Category() {
   const em=localStorage.getItem("userEmail")

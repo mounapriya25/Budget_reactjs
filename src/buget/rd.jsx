@@ -19,7 +19,8 @@ import  Dateft from './Dateft.jsx'
 import Side from './side.jsx'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+//const backendUrl = import.meta.env.VITE_BACKEND_URL;
+const backendUrl = process.env.VITE_BACKEND_URL;
 
 function Rd() {
 
