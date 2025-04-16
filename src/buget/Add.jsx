@@ -2,11 +2,12 @@ import React, { useEffect } from 'react'
 import "./add.css"
 import {useState} from 'react'
 import {useNavigate,useLocation} from 'react-router-dom'
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import axios from 'axios';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 function Add() {
     
     const[operation ,setOperation]=useState("")
