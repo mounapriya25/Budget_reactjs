@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Record.css"
+import "./record.css"
 import Menu from "@mui/icons-material/MenuOutlined"
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FactCheckOutlinedIcon from "@mui/icons-material/FactCheckOutlined";
