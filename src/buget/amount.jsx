@@ -11,7 +11,7 @@ import axios from "axios";
 import Dot from "@mui/icons-material/MoreHoriz";
 import Side from './side.jsx'
 //const backendUrl = import.meta.env.VITE_BACKEND_URL;
-const backendUrl = process.env.VITE_BACKEND_URL;
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 function Amount() {
    

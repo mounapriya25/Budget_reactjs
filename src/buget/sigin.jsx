@@ -4,7 +4,7 @@ import {useEffect,useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 //const backendUrl = import.meta.env.VITE_BACKEND_URL;
-const backendUrl = process.env.VITE_BACKEND_URL;
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 function Sigin() {
     const [form,setForm]=useState({

@@ -8,7 +8,7 @@ import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import axios from 'axios';
 //const backendUrl = import.meta.env.VITE_BACKEND_URL;
-const backendUrl = process.env.VITE_BACKEND_URL;
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 function Add() {
     
     const[operation ,setOperation]=useState("")

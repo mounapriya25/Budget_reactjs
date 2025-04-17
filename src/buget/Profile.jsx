@@ -4,7 +4,7 @@ import { useNavigate,useLocation } from 'react-router-dom';
 import axios from 'axios';
 import dayjs from 'dayjs';
 //const backendUrl = import.meta.env.VITE_BACKEND_URL;
-const backendUrl = process.env.VITE_BACKEND_URL;
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 
 function Profile() {
