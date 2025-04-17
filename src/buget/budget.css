@@ -14,6 +14,7 @@ body{
 .header2b{
     position: fixed;
     top: 8%;
+    z-index: 5;
     background-color: white;
     width: 100%;
     color: rgb(49, 150, 88);
@@ -156,9 +157,9 @@ body{
     position: fixed;
     top:30%;
     left:10%;
-    border: 2px solid rgb(208, 204, 204);
+    border: 2px solid rgb(240, 240, 240);
     background-color: white;
-    box-shadow:2px 2px 12px 12px rgb(137, 136, 136);
+    box-shadow:2px 2px 12px  rgb(137, 136, 136);
     width: 400px;
     height: 380px;
     margin-left: 25%;
@@ -199,7 +200,7 @@ body{
   .price-box {
     display: inline-block;
     position: relative;
-    right:43%;
+    right:13%;
     bottom: 20%;
     
     background-color: #2e7d32;
@@ -274,9 +275,14 @@ body{
     .drop{
         right: 5%;
     }
+    
     .price-box {
-        right:30%;
-    }
+        display: inline-block;
+        position: relative;
+        right:13%;
+        bottom: 3%;
+        
+      }
     
 }
 
@@ -285,7 +291,7 @@ body{
        
         display: grid;
         grid-template-columns: 160px 500px;
-        margin-left:50px;
+        margin-left:70px;
         background-color: rgb(254, 254, 254);
     
     }
@@ -297,7 +303,7 @@ body{
     }
     .header2b{
         position: fixed;
-        top: 2%;
+        top: 9%;
         background-color: white;
     }
     .br1{
@@ -312,11 +318,31 @@ body{
     .form{
         z-index: 10;
         position: fixed;
-        top:15%;
-        left:0%;
+        top:29%;
+        left:5%;
         
-        width:200px;
-        height: 380px;
+        width:350px;
+        height: 350px;
         margin-left: 0%;
     }
+    .bdData{
+        display: grid;
+        grid-template-columns: 22% 70% 10%;
+        border: 2px solid rgb(181, 178, 178);
+        color: black;
+        margin:10px 10px 10px 10px;
+        width: 95%;
+        font-size:17px;
+        border-radius: 5px;
+    }
+     
+  .price-box {
+    display: inline-block;
+    position: relative;
+    right:13%;
+    bottom: 3%;
+    
+  }
+  
+  
 }

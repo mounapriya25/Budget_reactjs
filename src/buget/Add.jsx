@@ -95,12 +95,12 @@ function Add() {
     const icon = () => {
         if (acc2 === "Category") { 
           return (
-            <CategoryOutlinedIcon style={{ fontSize: "30px", float: "left", margin: "8px 0px 0px 30px" }} />
+            <CategoryOutlinedIcon style={{ fontSize: "30px", float: "left", margin: "8px 0px 0px 3%" }} />
           );
         } else {
             
           return (
-            <AccountBalanceWalletOutlinedIcon style={{ fontSize: "30px", float: "left", margin: "8px 0px 0px 30px" }} />
+            <AccountBalanceWalletOutlinedIcon style={{ fontSize: "30px", float: "left", margin: "8px 0px 0px 3%" }} />
           );
         }
       };
@@ -170,7 +170,7 @@ const cancle=(e)=>{
         <div className='box'>
             {/*heading  */}
             <center> <h1 style={{color:"blue"}}>{operation} Record</h1></center>
-            <form onSubmit={frmsub}>
+            <form onSubmit={frmsub} className='Addform'>
                 {/*<label><input type="radio" />in</label><br/>*/}
                 <div class="radio-container">
                     <label><input type="radio" name="type" value="Income" onChange={(e)=>{setAcc2("Category");inpfrm(e)}}  checked={frm.type==="Income"}/>INCOME</label>
@@ -178,7 +178,7 @@ const cancle=(e)=>{
                     <label><input type="radio" name="type" value="Transfer" onChange={(e)=>{setAcc2("Account");inpfrm(e)}} checked={frm.type==="Transfer"}/>TRANSFER</label>
                 </div>
                     <button className='ac' name='account' id="act"  style={{color:frm.accId1?"blue":"grey"}} onClick={(e)=>e.preventDefault()}>
-                        <AccountBalanceWalletOutlinedIcon   style={{fontSize:"30px",float:"left", margin:"8px 0px 0px 30px " }}  />
+                        <AccountBalanceWalletOutlinedIcon   style={{fontSize:"30px",float:"left", margin:"8px 0px 0px 3% " }}  />
                         <p className='p'>Account</p>
                         <div className= "butclick1">
                             <div className='cat'>{getAct1()}</div>
@@ -186,7 +186,7 @@ const cancle=(e)=>{
                     </button>
                        {secondButt()} 
                     
-                   <textarea rows={5} cols={47} placeholder='Add notes' style={{padding:"20px 20px 0px " }} name="note" value={frm.note} onChange={inpfrm} />
+                   <textarea rows={5} cols={40} placeholder='Add notes' style={{padding:"20px 20px 0px " }} name="note" value={frm.note} onChange={inpfrm} />
                    <br/> <label>Value </label><br/> 
                    <input type='number' placeholder='Enter the value of amount'  min="1" className='amount' name="value" value={frm.value} onChange={inpfrm} required/>
                    <br/> <label>Date </label><br/> 

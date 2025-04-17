@@ -182,7 +182,7 @@ function disBg(){
               <div className='triangle'></div>
               </div>
               
-              <div><progress max={i.limit} value={i.spent} style={{ width: "300px",height: "30px",accentColor: (i.limit-i.spent)>0?"rgb(64, 61, 248)":"rgb(240, 27, 4)",marginBottom:"0px"}}></progress></div>
+              <div><progress max={i.limit} value={i.spent} style={{ width: "90%",height: "30px",accentColor: (i.limit-i.spent)>0?"rgb(64, 61, 248)":"rgb(240, 27, 4)",marginBottom:"10px"}}></progress></div>
               <div style={{float:"right",paddingBottom:10,color:'red',paddingRight:0,display:(i.limit-i.spent)>0?"none":"block"}}>*Limit Exceeded</div>
             </div>
             <div className='dot'>

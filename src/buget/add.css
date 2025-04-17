@@ -45,9 +45,6 @@
     margin: 5px 5px 0px 0px;   /* Control space between the button and label text */
 }
 
-form{
-    margin-left: 0px;
-}
 .labinc{
     border: 2px solid rgb(194, 196, 198) ;
     color: rgb(113, 114, 115);
@@ -76,7 +73,7 @@ form{
 }
 .butclick1 ,.butclick2{
     display: none;
-    border: 2px solid rgb(203, 199, 199);
+    border: 2px solid rgb(239, 235, 235);
     width: 500px;
     height: 400px;
     position:absolute;
@@ -177,10 +174,10 @@ form{
     
     .ac{
         
-        width: 43%;
+        width: 46%;
         height: 60px;
         color: #777a7a;
-        margin: 10px 10px 20px 10px;
+        margin: 10px 10px 20px 0px;
     }
     .radio-container {
        
@@ -196,20 +193,38 @@ form{
     .radio-container label {
         
         display: flex;
-        margin: 0px; 
+        margin: 0px 10px; 
         align-items: center; /* Center the radio button and label text vertically */
     }
     
     .radio-container input[type="radio"] {
       
-        margin: 5px 5px 0px 5px;   /* Control space between the button and label text */
+        margin: 0px 5px 0px 0px;   /* Control space between the button and label text */
     }
-    
-    form{
-        margin-left: 0px;
-       line-height: 10px;
+
+   
+    .Addform{
+        padding-left: 7%;
+        padding-right: 10px;
     }
-    input{
-        width: 10px;
+    .box{
+        position: relative;
+        height:750px;
     }
+    .Addform input{
+        width: 340px;
+    }
+    .butclick1 ,.butclick2{
+       
+        width: 370px;
+        height: 400px;
+       
+        left: 3%;
+        top: 19%;
+        background-color: white;
+        padding: 40px 10px 30px 10px;
+        box-shadow: 2px 2px 12px  rgb(199, 197, 197);
+    }
+   
+
 }

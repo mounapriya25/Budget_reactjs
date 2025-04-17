@@ -160,7 +160,7 @@ function Amount() {
         {/* date */}
         <div className='header2'>
          
-          <div className=' ah3' style={{lineHeight:"10px",marginTop:25,color:" rgb(82, 83, 84)",fontWeight:"bold"}}>
+          <div className=' ah3' style={{lineHeight:"10px",marginTop:25,color:" rgb(82, 83, 84)",fontWeight:"bolder",fontSize:"13px"}}>
             <div><span className='r1'>EXPENSE SO FAR</span> </div>
             <div ><span  className='r2'>INCOME SO FAR</span></div>
             <div ><span  className='r2'>TOTAL AMOUNT</span></div>

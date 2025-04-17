@@ -284,7 +284,7 @@ function Rd() {
   const disTran=(id)=>{
     const rd=record.find((i)=>i._id===id)
     console.log(id,rd,"heiiii")
-    /*if(rd.account2!=null && rd.typename==="Transfer"){
+    if(rd.account2!=null && rd.typename==="Transfer"){
       console.log(rd,"hiiiii")
       return(
         
@@ -298,7 +298,7 @@ function Rd() {
             
        
       )
-    }*/
+    }
   }
   const formatDt=(date)=>{
     return dayjs(date).format('MMMM DD,dddd')
@@ -311,7 +311,7 @@ function Rd() {
       return(
         
               <div>
-                <div style={{float:"left",marginLeft:"20%"}}><p>To Account2 :</p></div>
+                <div style={{float:"left"}} className='Accnt'><p>To Account2 :</p></div>
                 <div style={{float:"left"}}><img src={rd.account2.icon} alt={rd.name} width={48} style={{borderRadius:"10px",margin:"10px 10px 20px 20px"}}  /></div>
                 <p style={{float:"left",color:"rgb(89, 91, 94)"}}>{rd.account2.name}</p>
                
@@ -322,7 +322,7 @@ function Rd() {
     else{
       return(
         <div>
-           <div style={{float:"left",marginLeft:"20%"}}><p>Category :</p></div>
+           <div style={{float:"left"}}className='Accnt'><p>Category :</p></div>
           <div style={{float:"left"}}><img src={rd.category.icon} alt={rd.name} width={48} style={{borderRadius:"10px",margin:"10px 10px 20px 20px"}}  /></div>
           <p style={{float:"left",color:"rgb(89, 91, 94)"}}>{rd.category.name}</p>
         </div>
@@ -345,7 +345,7 @@ function Rd() {
           <div style={{float:"right",marginRight:20}}>{disdate(i.date,i.time)}</div>
       </div>
       <div className='data2'>
-        <div style={{float:"left",marginLeft:"20%"}}><p>Account : </p></div>
+        <div style={{float:"left"}} className='Accnt'><p>Account : </p></div>
         <div style={{float:"left"}}><img src={i.account1.icon} alt={i.name} width={48} style={{borderRadius:"10px",margin:"10px 10px 20px 20px"}}  /></div>
         <p style={{float:"left",color:"rgb(89, 91, 94)"}}>{i.account1.name}</p>
 

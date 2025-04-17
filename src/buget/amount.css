@@ -26,8 +26,7 @@ body{
 .ah3{
     display: grid;
     grid-template-columns: 700px 250px 200px;
-    font-size: 15;
-    font-weight:600;
+  
     color: rgb(87, 150, 108);
 
 }
@@ -104,18 +103,18 @@ body{
     color: rgb(239, 4, 4);
 }
 .dt h3{
-    color: rgb(7, 65, 254);
+    color: blue;
 }
 .button{
     margin-left: 30%;
     margin-top: 20px;
     background-color: aliceblue;
     
-    background-color: rgb(25, 5, 245);
+    background-color: blue;
     width: 200px;
 }
 #add{
-    background-color: rgb(17, 60, 232);
+    background-color: blue;
     margin-bottom:200px ;
     margin-top: 70px;
     margin-left: 40%;
@@ -231,7 +230,7 @@ body{
         margin-left: 10px;
     }
     #add{
-        background-color: rgb(17, 60, 232);
+        background-color: blue;
         margin-bottom:200px ;
         margin-top: 70px;
         margin-left: 35%;
@@ -244,12 +243,12 @@ body{
 
 @media screen and (max-width:600px){
     .r1{
-        margin: 10px 0px 10px 10px;
+        margin: 10px 0px 10px 20px;
     }
     .ah3{
         font-weight:600;
         display: grid;
-        grid-template-columns: 130px 120px 200px;
+        grid-template-columns: 160px 130px 200px;
         font-size: 12px;
         margin-left: 0%;
         color: rgb(150, 154, 152);
@@ -268,7 +267,7 @@ body{
        
     }
     .addinp{
-        top: 80px ;
+        top: 70px ;
         margin: 70px 70px 200px  0px;
         width: 95%;
         padding-left: 0cap;
@@ -283,7 +282,7 @@ body{
         
     }
     #add{
-        background-color: rgb(17, 60, 232);
+        background-color: blue;
         margin-bottom:200px ;
         margin-top: 70px;
         margin-left: 23%;
