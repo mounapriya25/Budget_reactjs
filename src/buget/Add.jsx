@@ -186,7 +186,7 @@ const cancle=(e)=>{
                     </button>
                        {secondButt()} 
                     
-                   <textarea rows={5} cols={40} placeholder='Add notes' style={{padding:"20px 20px 0px " }} name="note" value={frm.note} onChange={inpfrm} />
+                   <textarea rows={5} cols={38} placeholder='Add notes' style={{padding:"20px 20px 0px " }} name="note" value={frm.note} onChange={inpfrm} />
                    <br/> <label>Value </label><br/> 
                    <input type='number' placeholder='Enter the value of amount'  min="1" className='amount' name="value" value={frm.value} onChange={inpfrm} required/>
                    <br/> <label>Date </label><br/> 

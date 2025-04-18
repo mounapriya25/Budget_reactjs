@@ -179,6 +179,7 @@ hr{
 .Accnt{
     margin-left: 20%;
 }
+
 @media screen and (max-width:925px){
     #gt{
         margin:1px 110px;
@@ -294,7 +295,7 @@ hr{
         grid-template-columns: 100px 390px 10px ;
     }
     .bt{
-      margin-right:26px;
+      margin-right:21px;
       font-size: 12px;
        
     }
@@ -344,13 +345,16 @@ hr{
     }
     .labs{
         display: grid;
-        grid-template-columns: 12% 75% 10%;
+        grid-template-columns: 10% 74% 10%;
         margin-top: 20px;
         border: 2px solid rgba(187, 200, 207, 0.44);
-        padding: 10px 20px 0px 10px;
+        padding: 10px 20px 10px 5px;
         border-radius: 15px;
-        width: 80%;
-        margin-left: 10%;
+        width: 98%;
+        overflow-x: scroll;
+        scrollbar-width: none;
+        font-size: small;
+        margin-left: 1%;
         
        
     }

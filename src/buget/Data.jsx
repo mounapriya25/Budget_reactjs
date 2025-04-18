@@ -144,7 +144,7 @@ function Analysis() {
     
     };
       return (
-        <div style={{ width: "100%", height: 400 }}>
+        <div  className='pieCont'>
           <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Monthly Expenses</h2>
           <ResponsiveContainer>
             <PieChart>
@@ -152,8 +152,8 @@ function Analysis() {
                 data={data}
                 cx="50%"
                 cy="50%"
-                innerRadius={80}
-                outerRadius={140}
+                innerRadius="40%"
+                outerRadius="80%"
                 fill="#8884d8"
                 paddingAngle={5}
                 dataKey="amount" // Use 'amount' as the data key
@@ -173,7 +173,8 @@ function Analysis() {
                 y="50%"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                style={{ fontSize: "24px", fontWeight: "bold", fill: "#333" }}
+                className='centHead'
+                
               >
                 Expenses
               </text>

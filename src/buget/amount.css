@@ -262,9 +262,20 @@ body{
         padding: 20px 20px 0px 10px;
         border-radius: 15px;
         width: 90%;
-        
+       
         margin-left: 5%;
        
+    }
+    .Balance{
+        white-space: wrap;
+      
+        text-overflow: ellipsis;
+        max-width: 140px;
+      vertical-align: baseline;
+       height: 20px;
+
+        display: inline-block;
+
     }
     .addinp{
         top: 70px ;
@@ -285,6 +296,7 @@ body{
         background-color: blue;
         margin-bottom:200px ;
         margin-top: 70px;
-        margin-left: 23%;
+        margin-left: 25%;
     }
+    
 }

@@ -85,7 +85,8 @@ function Amount() {
       <div style={{position:'relative',bottom:"10px"}} ><img src={i.icon} alt={i.name} width={50} style={{borderRadius:"30px"}}  /></div> 
       <div className='dt' style={{marginBottom:20}}>
         <h3 style={{textAlign:"left"}}>{i.name}</h3>
-        <p>Balance : <span>{i.amount}</span><span>{currency}</span></p>
+        <div ><p  >Balance : <span  className='Balance'>{i.amount}</span><span>{currency}</span></p></div>
+        
       </div>
        <div className='dot'><div><Dot style={{ fontSize: 30, color: "rgb(5, 5, 251)" }} /></div>
         <div className='dropdn'>

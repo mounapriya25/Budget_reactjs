@@ -159,7 +159,7 @@ body{
     left:10%;
     border: 2px solid rgb(240, 240, 240);
     background-color: white;
-    box-shadow:2px 2px 12px  rgb(137, 136, 136);
+    box-shadow:2px 2px 12px 10px rgb(137, 136, 136);
     width: 400px;
     height: 380px;
     margin-left: 25%;
@@ -303,7 +303,7 @@ body{
     }
     .header2b{
         position: fixed;
-        top: 9%;
+        top: 58px;
         background-color: white;
     }
     .br1{
