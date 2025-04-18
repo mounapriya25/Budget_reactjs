@@ -242,12 +242,7 @@ body {
     
     margin-left: 0%;
   }
-  .auth-buttons {
-    display: grid;
-    grid-template-columns: 60% 30%;
-    padding: 10px;
-    margin-left: 10%;
-  }
+  
   .login-btnw {
     color: #1f64cc;
     background-color: white;

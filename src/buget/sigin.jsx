@@ -52,7 +52,7 @@ function Sigin() {
     <h2>Sign In </h2>
     
     
-        <form onSubmit={signfrm}>
+        <form onSubmit={signfrm} className='lgfrm'>
             <label className='label' >User name</label><br/>
             <input type="text" id="name" name="username" placeholder=" Enter your name" required  onChange={sfrm}/><br/>
         

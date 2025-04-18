@@ -13,7 +13,7 @@ body{
     background-color: rgb(6, 54, 246);
     z-index: 1;
 }
-.header2{
+.header2ac{
     position: fixed;
     top: 8%;
     width: 100%;
@@ -288,7 +288,11 @@ body{
         color: rgb(150, 154, 152);
     
     }
-   
+    .header2ac{
+        position: fixed;
+       
+       
+    }
     .header{
    
         display: grid;

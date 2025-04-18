@@ -159,7 +159,7 @@ function Amount() {
         </div>
 
         {/* date */}
-        <div className='header2'>
+        <div className='header2ac'>
          
           <div className=' ah3' style={{lineHeight:"10px",marginTop:25,color:" rgb(82, 83, 84)",fontWeight:"bolder",fontSize:"13px"}}>
             <div><span className='r1'>EXPENSE SO FAR</span> </div>

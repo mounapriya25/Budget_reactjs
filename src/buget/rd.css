@@ -129,6 +129,8 @@ a{
     border-radius: 15px;
     width: 70%;
     margin-left: 17%;
+    overflow-x: scroll;
+    scrollbar-width: none;
     
    
 }
@@ -295,7 +297,7 @@ hr{
         grid-template-columns: 100px 390px 10px ;
     }
     .bt{
-      margin-right:21px;
+      margin-right:34px;
       font-size: 12px;
        
     }
@@ -310,7 +312,7 @@ hr{
     
     }
     .addbt{
-        margin-left: 26%;
+        margin-left: 28%;
     }
     .body{
         margin-top: 190px;
@@ -350,11 +352,12 @@ hr{
         border: 2px solid rgba(187, 200, 207, 0.44);
         padding: 10px 20px 10px 5px;
         border-radius: 15px;
-        width: 98%;
+        width: 96%;
         overflow-x: scroll;
         scrollbar-width: none;
         font-size: small;
-        margin-left: 1%;
+        margin-left: 2%;
+       
         
        
     }

@@ -362,7 +362,7 @@ function Rd() {
         <div className='trd'>
           <div className="labs" onClick={(e)=>{e.preventDefault(); setVisibleId(i._id)}}>
             <div className="labels">
-            <div style={{position:'relative',bottom:"10px",top:"0px"}} ><img src={(i.typename!=="Transfer")?i.category.icon:"http://localhost:8000/images/icons8-exchange-96.png"} alt={i.name} width={50} style={{borderRadius:"30px"}}  /></div> 
+            <div style={{position:'relative',bottom:"10px",top:"0px"}} ><img src={(i.typename!=="Transfer")?i.category.icon:"https://node-vnkg.onrender.com/images/icons8-exchange-96.png"} alt={i.name} width={50} style={{borderRadius:"30px"}}  /></div> 
             </div>
             <div className="labels name">
               <p style={{ fontSize: '18px', marginTop: '10px', fontWeight: 'bold', color: 'rgb(6, 54, 246)' }}>

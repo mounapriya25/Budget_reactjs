@@ -54,7 +54,7 @@ function Login() {
     
         <div className="login">
         <h2>Login </h2>
-          <form onSubmit={loginform}>
+          <form onSubmit={loginform} className='lgfrm'>
                     <label  >Email</label><br/>
                     <input type="Email" id="email" name="email" placeholder=" Enter email address" onChange={sform}/><br/>
                 

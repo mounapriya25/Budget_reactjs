@@ -16,7 +16,7 @@ function Webpage() {
 
         <div className="auth-buttons">
           <button className="login-btnw" style={{border:"2px solid blue",padding:2}} onClick={() => nav('/login')}>Log in</button>
-          <button className="login-btnw" style={{border:"2px solid blue",padding:2}} onClick={() =>nav('/signin' )}>Sigin in</button>
+         {/*} <button className="login-btnw" style={{border:"2px solid blue",padding:2}} onClick={() =>nav('/signin' )}>Sigin in</button>*/}
         </div>
       </header>
       
@@ -27,7 +27,7 @@ function Webpage() {
         </div>
         <h2>Money Tracker</h2>
         <h3 style={{fontSize:20}}>Personal Budget Manager</h3>
-        {/*<button className="login-btn" style={{border:"2px solid blue",padding:2,width:"170px",backgroundColor:"white",color:"blue"}} onClick={() =>nav('/signin' )}>Create Account</button>*/}
+        <button className="login-btn" style={{border:"2px solid blue",padding:2,width:"170px",backgroundColor:"white",color:"blue"}} onClick={() =>nav('/signin' )}>Create Account</button>
         <p>Manage your personal finances and easily track your money, expenses and budget</p>
         
       </section>

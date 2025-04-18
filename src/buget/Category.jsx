@@ -177,7 +177,7 @@ function eidt(e,id,name,type,icon){
       </div>
 
       {/* Summary */}
-      <div className='header2'>
+      <div className='header2ac'>
         <div className=' ch3' style={{lineHeight:"10px",marginTop:25,color:" rgb(82, 83, 84)",fontWeight:"bold"}}>
             <div><span className='r1'>EXPENSE SO FAR</span> </div>
             <div ><span  className='r2'>INCOME SO FAR</span></div>
