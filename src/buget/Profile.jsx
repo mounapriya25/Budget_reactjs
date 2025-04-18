@@ -195,7 +195,7 @@ function Profile() {
     return (
         <div className="form-card">
           <h2 style={{color:"blue"}}>Profile Information</h2>
-          <form onSubmit={handleSubmit} >
+          <form onSubmit={handleSubmit} className='prform' >
     
             <label > Name</label><br/>
             <input
@@ -204,6 +204,7 @@ function Profile() {
               placeholder="Name"
               value={formData.lastName}
               onChange={handleChange}
+               className='input'
               
             /><br/>
           <label className='label'>Email Address</label><br/>
@@ -213,6 +214,7 @@ function Profile() {
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
+               className='input'
             /><br/>
             
             <label className='label'>Phone Number</label><br/>
@@ -237,7 +239,7 @@ function Profile() {
     return (
         <div className="form-card">
           <h2 style={{color:"blue"}}>Password & Security</h2>
-          <form onSubmit={PasshandleSubmit}>
+          <form onSubmit={PasshandleSubmit} className='prform'>
           <label className='label'>Email Address</label><br/>
             <input
               type="email"
@@ -285,7 +287,7 @@ function Profile() {
     return (
         <div className="form-card">
           <h2 style={{color:"blue"}}>Set Currency</h2>
-          <form onSubmit={currencySubmit} className="currency-form">
+          <form onSubmit={currencySubmit} className="currency-form prform">
         <h4>Select Currency Sign:</h4><br />
 
         <label><input type="radio" name="currency" value="₹" checked={Modeform.currency==="₹"} onChange={ChangeMode}/>Rupee (₹)</label><br />
@@ -305,7 +307,7 @@ function Profile() {
     return (
         <div className="form-card">
           <h2 style={{color:"blue"}}>Set Veiw Mode</h2>
-          <form onSubmit={ModeSubmit} className="currency-form">
+          <form onSubmit={ModeSubmit} className="currency-form  prform">
         <h4>Select Mode</h4><br />
 
         <label><input type="radio" name="mode" value="daily" checked={Modeform.mode==="daily"} onChange={ChangeMode}/>Daily</label><br />
@@ -325,13 +327,13 @@ function Profile() {
     return (
         <div className="form-card">
           <h2 style={{color:"blue"}}>Export Records</h2>
-          <form onSubmit={ExportSubmit} >
+          <form onSubmit={ExportSubmit}  className='prform'>
             <label className='label' >From</label><br/>
             <input type="Date" name="from"  className='input' placeholder="From date" value={Exportform.from} onChange={ChangeExp}/><br/>
             <label className='label'>To</label><br/>
             <input type="Date" name="to" className='input'  placeholder="To date" value={Exportform.to} onChange={ChangeExp}/><br/>
-            <div style={{float:"right",margin:"0px 15px"}}><button style={{backgroundColor:"blue",border:"none"}}   onClick={Cancle}>Cancle</button></div>
-            <div><button style={{backgroundColor:"red",border:"none"}} type='submit'>PDF</button></div>
+            <div style={{float:"right",margin:"20px 35px"}}><button style={{backgroundColor:"blue",border:"none"}}   onClick={Cancle}>Cancle</button></div>
+            <div><button style={{backgroundColor:"red",border:"none",margin:"20px 0px"}} type='submit'>PDF</button></div>
           
       </form>
         </div>
@@ -342,7 +344,7 @@ function Profile() {
         <div className="form-card">
           <h2 style={{color:"blue"}}>Reset All</h2>
           <p style={{color:"rgb(107, 108, 112)",paddingLeft:40}}>Restting webapp to its initial state,deleting current records,accounts categories and budgets.Do you want to Reset ? </p>
-          <form onSubmit={ResetSubmit} >
+          <form onSubmit={ResetSubmit}  className='prform'>
            
             <div style={{float:"right",margin:"0px 15px"}}><button style={{backgroundColor:"blue",border:"none"}}   onClick={Cancle}>Cancle</button></div>
             <div><button style={{backgroundColor:"red",border:"none"}} type='submit'>Yes</button></div>
@@ -356,7 +358,7 @@ function Profile() {
         <div className="form-card">
           <h2 style={{color:"blue"}}>Delete All Records </h2>
           <p style={{color:"rgb(107, 108, 112)",paddingLeft:40}}>Delete all records ,but kepping current accounts ,categories and budgets. Do you want to Delete ? </p>
-          <form onSubmit={DelSubmit} >
+          <form onSubmit={DelSubmit}  className='prform'>
            
             <div style={{float:"right",margin:"0px 15px"}}><button style={{backgroundColor:"blue",border:"none"}} onClick={Cancle}>Cancle</button></div>
             <div><button style={{backgroundColor:"red",border:"none"}} type='submit'>Yes</button></div>
@@ -373,7 +375,7 @@ function Profile() {
           <h2 style={{color:"blue"}}>Log out</h2>
           
           <p style={{color:"rgb(107, 108, 112)",paddingLeft:0,textAlign:"center"}}> Do you want to log out your account? </p>
-          <form onSubmit={LogoutSubmit} >
+          <form onSubmit={LogoutSubmit}  className='prform'>
            
             <div style={{float:"right",margin:"0px 15px"}}><button style={{backgroundColor:"blue",border:"none"}}  onClick={Cancle}>Cancle</button></div>
             <div><button style={{backgroundColor:"red",border:"none"}} type='submit'>Yes</button></div>
