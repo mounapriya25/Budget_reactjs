@@ -332,7 +332,7 @@ function Profile() {
             <input type="Date" name="from"  className='input' placeholder="From date" value={Exportform.from} onChange={ChangeExp}/><br/>
             <label className='label'>To</label><br/>
             <input type="Date" name="to" className='input'  placeholder="To date" value={Exportform.to} onChange={ChangeExp}/><br/>
-            <div style={{float:"right",margin:"20px 35px"}}><button style={{backgroundColor:"blue",border:"none"}}   onClick={Cancle}>Cancle</button></div>
+            <div style={{float:"right",margin:"20px 20px"}}><button style={{backgroundColor:"blue",border:"none"}}   onClick={Cancle}>Cancle</button></div>
             <div><button style={{backgroundColor:"red",border:"none",margin:"20px 0px"}} type='submit'>PDF</button></div>
           
       </form>
