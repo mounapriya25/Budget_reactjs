@@ -15,7 +15,7 @@ function Webpage() {
         
 
         <div className="auth-buttons">
-          <button className="login-btnw" style={{border:"2px solid blue",padding:2}} onClick={() => nav('/login')}>Log in</button>
+          <button className="login-btnw" style={{border:"2px solid blue",padding:2}} onClick={() => nav('/login')}>Login</button>
          {/*} <button className="login-btnw" style={{border:"2px solid blue",padding:2}} onClick={() =>nav('/signin' )}>Sigin in</button>*/}
         </div>
       </header>

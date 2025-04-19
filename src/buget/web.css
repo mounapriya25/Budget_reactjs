@@ -146,108 +146,18 @@ body {
 
 
 
-  /*----------------*/
-  .mint-container {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color:blue;
-    text-align: center;
-    background: #f0f8f5;
-    padding: 20px;
-  }
-  
-  .mint-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 20px;
-  }
-  
-  .mint-logo-menu {
-    display: flex;
-    align-items: center;
-  }
-  
-  .menu-icon {
-    font-size: 24px;
-    background: none;
-    border: none;
-    margin-right: 10px;
-  }
-  
-  .mint-logo {
-    width: 30px;
-    height: auto;
-  }
-  
-  .mint-auth-buttons .btn-outline {
-    border: 1px solid #333;
-    padding: 8px 16px;
-    margin-left: 10px;
-    border-radius: 4px;
-    background: transparent;
-    cursor: pointer;
-  }
-  
-  .lock-icon::before {
-    content: '🔒 ';
-  }
-  
-  .mint-main {
-    max-width: 600px;
-    margin: auto;
-  }
-  
-  .mint-title {
-    font-size: 28px;
-    color: #0254ed;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  
-  .mint-description {
-    color: #555;
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  
-  .btn-primary {
-    background-color: #007c72;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-  
-  .mint-image img {
-    width: 200px;
-    border-radius: 10px;
-    margin: 20px 0;
-  }
-  
-  .mint-subtext {
-    font-size: 18px;
-    font-weight: 600;
-    color: #2e2e2e;
-    padding: 10px;
-  }
 @media screen  and (max-width:600px){
   body {
     font-family: Arial, sans-serif;
   
   }
   
-  .navbar{
-    
-    margin-left: 0%;
-  }
   
   .login-btnw {
     color: #1f64cc;
     background-color: white;
     border: #0254ed ;
-    width: 80px;
+    width: 58px;
     padding: 10px;
     padding-top: 0%;
     
