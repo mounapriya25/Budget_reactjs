@@ -284,7 +284,7 @@ function Rd() {
   const disTran=(id)=>{
     const rd=record.find((i)=>i._id===id)
     console.log(id,rd,"heiiii")
-    if(rd.account2!=null && rd.typename==="Transfer"){
+    if(rd && rd.account2 != null && rd.typename === "Transfer"){
       console.log(rd,"hiiiii")
       return(
         

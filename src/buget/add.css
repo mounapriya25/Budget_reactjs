@@ -153,6 +153,12 @@
     form{
         margin-left: 0px;
     }
+    .butclick1 ,.butclick2{
+        
+        left: 20%;
+        top: 55%;
+        
+    }
 }
 @media screen  and (max-width:600px){
     .box{
