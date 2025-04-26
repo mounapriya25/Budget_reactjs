@@ -280,8 +280,11 @@ body{
         display: inline-block;
         position: relative;
         right:13%;
-        bottom: 3%;
+        bottom: 16%;
         
+      }
+      input{
+       padding: 10px;
       }
     
 }
