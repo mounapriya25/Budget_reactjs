@@ -1,13 +1,21 @@
 import React, { useEffect } from 'react'
+import Cookies from "js-cookie";
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
-    const u=localStorage.getItem("userEmail")
+   
     console.log(u,"in home ");
     const nav=useNavigate()
     useEffect(()=>{
+      const storedEmail = Cookies.get("userEmail");
+    if (storedEmail) {
+      setEmail(storedEmail);
+      console.log("Email from cookie:", storedEmail);
+    }
+    
       nav("/rd");
-    },[nav])
+  }, []);
+
   return (
     <div>
       <div style={{ textAlign: "center", marginTop: "50px" }}>

@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://budget-reactjs.vercel.app",
-  "engines":{
-    "node":"20.x"
+  "engines": {
+    "node": "20.x"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -17,6 +17,7 @@
     "axios": "^1.8.4",
     "chart.js": "^4.4.8",
     "dayjs": "^1.11.13",
+    "js-cookie": "^3.0.5",
     "pdfkit": "^0.17.0",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.3.0",

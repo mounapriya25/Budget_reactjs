@@ -21,6 +21,7 @@ function Login() {
     }
     function google(e){
         e.preventDefault()
+        console.log("hellllllllll")
         window.location.href=`${backendUrl}/auth/google`
     }
     async function loginform(event){
