@@ -1,22 +1,24 @@
 import React, { useEffect } from 'react'
 import Cookies from "js-cookie";
 import { useNavigate } from 'react-router-dom';
+import axios from "axios"
 
 function Home() {
-    let storedEmail
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    async function em(){
+      try{
+      const res = await axios.get(`${backendUrl}/setemail`,{withCredentials:true})
+       localStorage.setItem("",res.data.email)
+       console.log(res.data.email)
+      }catch(e){
+        console.log(e)
+      }
+      
+      //nav("/rd");
+    }
     const nav=useNavigate()
     useEffect(()=>{
-       storedEmail = Cookies.get("userEmail");
-      console.log("cookie:", storedEmail);
-
-    if (storedEmail) {
-      localStorage.setItem("userEmail",storedEmail)
-      console.log("Email from cookie:", storedEmail);
-    }
-    else{
-      console.log("not founddd")
-    }
-      //nav("/rd");
+      em()
   }, []);
 
   return (
