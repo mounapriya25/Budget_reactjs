@@ -18,7 +18,7 @@ function Sigin() {
         e.preventDefault()
         console.log(form)
        // const resp=await axios.post("http://localhost:8000/siginform",form)
-       const resp=await axios.post(`${backendUrl}/siginform`,form)
+        const resp=await axios.post(`${backendUrl}/siginform`,form)
         setRp(resp.data.message)
         if(resp.data.message=="Sucessfully sigin"){
             localStorage.setItem("userEmail",resp.data.us.email)

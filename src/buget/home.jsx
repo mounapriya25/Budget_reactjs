@@ -3,8 +3,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
-   
-    console.log(u,"in home ");
+
     const nav=useNavigate()
     useEffect(()=>{
       const storedEmail = Cookies.get("userEmail");
@@ -12,7 +11,9 @@ function Home() {
       setEmail(storedEmail);
       console.log("Email from cookie:", storedEmail);
     }
-    
+    else{
+      console.log("not founddd")
+    }
       nav("/rd");
   }, []);
 
