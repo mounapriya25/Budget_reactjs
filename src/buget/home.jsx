@@ -22,7 +22,7 @@ function Home() {
   return (
     <div>
       <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h2>🎉 Welcome back, {u}!</h2>
+      <h2>🎉 Welcome back,</h2>
       <p>Redirecting you to your dashboard...</p>
     </div>
     </div>
