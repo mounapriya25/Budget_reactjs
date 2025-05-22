@@ -10,7 +10,7 @@ function Home() {
       console.log("cookie:", storedEmail);
 
     if (storedEmail) {
-      setEmail(storedEmail);
+      localStorage.setItem("userEmail",storedEmail)
       console.log("Email from cookie:", storedEmail);
     }
     else{
