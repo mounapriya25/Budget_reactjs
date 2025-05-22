@@ -24,7 +24,7 @@ function Setpass(){
     if(resp.data){
       localStorage.setItem("userEmail",resp.data.us.email)
       const u=localStorage.getItem("userEmail")
-            console.log(u);
+      console.log(u);
       navigate("/home")
     }
   }
