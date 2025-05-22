@@ -9,7 +9,7 @@ function Home() {
       try{
       const res = await axios.get(`${backendUrl}/setemail`,{withCredentials:true})
        localStorage.setItem("userEmail",res.data.email)
-       console.log(res.data.email)
+       console.log(res.data,"offf")
       }catch(e){
         console.log(e)
       }
