@@ -7,6 +7,8 @@ function Home() {
     const nav=useNavigate()
     useEffect(()=>{
       const storedEmail = Cookies.get("userEmail");
+      console.log("cookie:", storedEmail);
+
     if (storedEmail) {
       setEmail(storedEmail);
       console.log("Email from cookie:", storedEmail);
@@ -14,7 +16,7 @@ function Home() {
     else{
       console.log("not founddd")
     }
-      nav("/rd");
+      //nav("/rd");
   }, []);
 
   return (
