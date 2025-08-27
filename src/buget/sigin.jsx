@@ -14,7 +14,7 @@ function Sigin() {
     })
     const [rp,setRp]=useState("")
     const nav=useNavigate()
-    async function signfrm(e){
+    async function signfrm(e){ 
         e.preventDefault()
         console.log(form)
        // const resp=await axios.post("http://localhost:8000/siginform",form)
@@ -37,7 +37,7 @@ function Sigin() {
         e.preventDefault()
        setForm({...form,[e.target.name]:e.target.value})
 
-    }
+    }       
     function google(e){
         e.preventDefault();
         window.location.href=`${backendUrl}/auth/google`

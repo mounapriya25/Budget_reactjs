@@ -145,13 +145,13 @@ function Profile() {
     console.log('Saved data:', Exportform);
     //learn
     try{
-      const res= await axios.get(`${backendUrl}/exportpdf`,{params:Exportform,responseType:"blob"})
-      const url= window.URL.createObjectURL(new Blob([res.data]))
+      const res= await axios.get(`${backendUrl}/exportpdf`,{params:Exportform,responseType:"blob"})//blob binary data ,export form is object with form data
+      const url= window.URL.createObjectURL(new Blob([res.data]))//it wrap binary data into object and then downloding link
       const a=document.createElement('a')
       a.href=url
-      a.download="transaction.pdf"
+      a.download="transaction.pdf"//set file name
       document.body.appendChild(a)
-      a.click()
+      a.click()//automatically click the link and then remove after dowlodind it
       a.remove()
       }catch(err){
         console.log(err.message)
